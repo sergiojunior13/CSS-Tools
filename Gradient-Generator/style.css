@@ -11,6 +11,10 @@ body {
     flex-direction: column;
 }
 
+main h1 {
+    padding: 15px;
+}
+
 main {
     background: #eeeded;
     width: 70vw;
@@ -23,10 +27,6 @@ main {
     padding-top: 0;
     margin: 20px;
     border-radius: 10px;
-}
-
-main h1 {
-    padding: 15px;
 }
 
 .result {
