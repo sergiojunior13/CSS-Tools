@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+* {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
+}
+
+body {
+    text-align: center;
+}
+
+header {
+    background: #0099ff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 10px;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid #c5c5c5;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+header div a:hover, section a:hover {
+    text-decoration: underline;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section a {
+    color: black;
+    width: fit-content;
+}
+
+#home {
+    background-image: radial-gradient(circle at 0% 0%, #F5F5F5FF, #e0e0e0);
+}
+
+#home h1 {
+    padding: 50px 0;
+    font-size: 30px;
+}
+
+#home a {
+    font-size: 25px;
+}
+
+#tools {
+    background-image: conic-gradient(from 360deg at 50% -10%, #6d9bff, #323fff);
+    color: white;
+    padding: 0;
+}
+
+#tools h1 {
+    font-size: 40px;
+}
+
+#tools ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+#tools a {
+    color: white;
+}
+
+#toolsLinks {
+    height: 50vh;
+    background: #0516B0;
+    width: 100vh;
+}
+
+#gradientGenerator h1 {
+    font-size: 36px;
+    margin: 30px;
+    margin-bottom: 20px;
+}
+
+#gradientGenerator p {
+    font-size: 20px;
+}
+
+#gradientGenerator h3 {
+    font-size: 28px;
+    margin: 35px;
+}
+
+#gradientGenerator img {
+    width: 70vw;
+    max-width: 800px;
+    border-radius: 10px;
+    border: 4px solid #ccc;
+}
+
+#gradientGenerator span {
+    display: inline-block;
+    height: 120px;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    align-content: center;
+    border-radius: 10px;
+    border: 2px solid #bebebe;
+}
+
+.linearGradient {
+    background-image: linear-gradient(0deg, #0C2FC4FF, #12A5C4FF);
+}
+
+.radialGradient {
+    background-image: radial-gradient(ellipse at 50% 50%, #1FC400FF, #00C2C4FF);
+}
+
+.conicGradient {
+    background-image: conic-gradient(from 135deg at 50% 50%, #FF0000FF, #FF9517FF);
+}
