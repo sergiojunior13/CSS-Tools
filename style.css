@@ -73,6 +73,7 @@ section a {
 #tools ul {
     list-style: none;
     padding: 0;
+    width: max-content;
 }
 
 
