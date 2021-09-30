@@ -14,7 +14,7 @@ body {
 }
 
 header {
-    background: #0099ff;
+    background-image: linear-gradient(90deg, #0539F5FF, #0FC7FFFF);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -25,8 +25,8 @@ header {
     border-bottom: 2px solid #c5c5c5;
 }
 
-.nav a {
-    padding: 3px;
+header nav a {
+    margin: 5px;
 }
 
 a {
@@ -34,7 +34,7 @@ a {
     text-decoration: none;
 }
 
-header div a:hover, section a:hover {
+header nav a:hover, section a:hover {
     text-decoration: underline;
 }
 
@@ -44,6 +44,7 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-bottom: 3px solid #aaa;
 }
 
 section a {
@@ -77,9 +78,8 @@ section a {
 #tools ul {
     list-style: none;
     padding: 0;
-    width: 90vw;
+    width: 80vw;
 }
-
 
 #tools a {
     color: white;
@@ -91,30 +91,32 @@ section a {
     width: 100vh;
 }
 
-#gradientGenerator h1 {
+#gradientGenerator h1, #box-shadow h1 {
     font-size: 36px;
     margin: 30px;
     margin-bottom: 20px;
 }
 
-#gradientGenerator p {
-    font-size: 20px;
-}
-
-#gradientGenerator h3 {
+#gradientGenerator h3, #box-shadow h3 {
     font-size: 28px;
     margin: 35px;
 }
 
-#gradientGenerator img {
+#gradientGenerator img, #box-shadow img {
     width: 70vw;
     max-width: 800px;
     border-radius: 10px;
     border: 4px solid #ccc;
 }
 
+.examplesGradient, .examplesBoxShadow {
+    display: flex;
+}
+
 #gradientGenerator span {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 120px;
     width: 200px;
     padding: 10px;
@@ -135,4 +137,45 @@ section a {
 
 .conicGradient {
     background-image: conic-gradient(from 135deg at 50% 50%, #FF0000FF, #FF9517FF);
+}
+
+#box-shadow span {
+    height: 120px;
+    width: 200px;
+    margin: 20px;
+    background: #e6e6e6;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+    section#gradientGenerator span, section#box-shadow span {
+        width: 150px;
+        height: 80px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        font-size: 10px;
+    }
+    .home, .tools {
+        display: none;
+    }
+    section#home h1 {
+        font-size: 25px;
+    }
+    .examplesGradient, .examplesBoxShadow {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    section#gradientGenerator span, section#box-shadow span {
+        width: 150px;
+        height: 80px;
+    }
 }
