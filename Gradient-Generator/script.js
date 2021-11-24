@@ -132,4 +132,38 @@ function changePosition() {
 
 function copy() {
     navigator.clipboard.writeText(codeElement.textContent);
+    var div = document.createElement("div")
+    div.innerHTML = "Copied!"
+    div.classList = "copyDiv"
+    document.body.appendChild(div)
+    setTimeout(function(){
+        div.style.transform = "translateY(0px)"
+    }, 10)
+
+    setTimeout(function(){
+        div.style.transform = "translateY(60px)"
+       setTimeout(function(){
+        document.body.removeChild(div)
+       },1000)
+    }, 1300)
+}
+
+var menu = document.getElementById("menu")
+var nav = document.getElementById("nav")
+
+menu.addEventListener("click", mostrarMenu)
+
+function mostrarMenu() {
+    if(nav.style.display == ""){
+        nav.style.display = "flex"
+        setTimeout(() => {
+            nav.style.opacity = 1
+        }, 10);
+    }
+    else {
+        nav.style.opacity = 0
+        setTimeout(() => {
+            nav.style.display = ""
+        }, 500);
+    }
 }

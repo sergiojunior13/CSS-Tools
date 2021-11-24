@@ -1,4 +1,10 @@
+html body {
+    background-image: none;
+    background-color: #fff;
+}
+
 main {
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,9 +127,7 @@ main {
     * {
         padding: 0;
     }
-    header {
-        font-size: 10px;
-    }
+
     .result {
         width: 80vw;
     }

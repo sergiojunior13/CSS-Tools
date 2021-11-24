@@ -213,7 +213,7 @@ li {
 @media (max-width: 550px) {
     h1 {
         font-size: 25px;
-        width: max-content;
+        /* width: max-content; */
     }
     main {
         margin: 5px;
