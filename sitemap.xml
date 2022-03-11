@@ -13,11 +13,6 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://css-tools.netlify.app/index.html</loc>
-  <lastmod>2022-03-11T17:24:45+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://css-tools.netlify.app/gradient-generator/</loc>
   <lastmod>2022-03-11T17:24:45+00:00</lastmod>
   <priority>0.80</priority>
