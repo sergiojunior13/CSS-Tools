@@ -1,11 +1,3 @@
-body {
-    background: #fff;
-}
-
-main {
-    font-size: 1.1em;
-}
-
 main h1 {
     margin: 20px;
 }
@@ -31,35 +23,4 @@ input {
     background-size: cover;
     background-image: url("https://github.com/SergioJunior13/Imagens/raw/main/beach-418742_960_720.webp");
     border-radius: 8px;
-}
-
-.divCode {
-    margin: 10px auto;
-    background: #1c1c1c;
-    color: white;
-    width: 400px;
-    max-width: 550px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-#code {
-    height: 80px;
-}
-
-#btnCopy {
-    align-self: flex-end;
-    padding: 0;
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-}
-
-#btnCopy img {
-    width: 30px;
-    padding: 4px;
 }

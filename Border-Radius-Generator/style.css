@@ -1,0 +1,48 @@
+.result {
+    width: 60%;
+    max-width: 550px;
+    height: 130px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+    position: relative;
+}
+
+.tip {
+    margin-top: 50px;
+}
+
+.result > .radiusValue {
+    width: 30px;
+    position: absolute;
+    background-color: #1c1c1c;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    color: #e1e1e1;
+    --padding: 10px;
+}
+
+#top-left {
+    top: var(--padding);
+    left: var(--padding);
+}
+
+#top-right {
+    top: var(--padding);
+    right: var(--padding);
+}
+
+#bottom-left {
+    bottom: var(--padding);
+    left: var(--padding);
+}
+
+#bottom-right {
+    bottom: var(--padding);
+    right: var(--padding);
+}
