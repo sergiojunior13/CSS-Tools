@@ -7,12 +7,27 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 50px;
+    text-align: center;
 }
 
-body {
+#home-page {
     text-align: center;
-    background-image: conic-gradient(from 0deg at 100% 100%, #5283ff, #3D56F5FF);
+    background: linear-gradient(45deg,#2e97ff, #88c4ff, #0081ff);
+    background-size: 400% 400%;
     background-attachment: fixed;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
@@ -55,6 +70,10 @@ nav a:hover {
     opacity: 0.8;
 }
 
+main > h1 {
+    margin-top: 20px;
+}
+
 #tools {
     color: white;
     padding: 0;
@@ -79,12 +98,12 @@ nav a:hover {
 #tools p {
     display: flex;
     height: 200px;
-    width: 200px;
+    width: 300px;
     margin: 5px;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    border: 3px #444 solid;
+    border: 3px solid #0231a8;
     transition: 200ms;
     text-shadow: 0px 0px 5px black;
     background-size: cover;
@@ -92,19 +111,7 @@ nav a:hover {
 }
 
 #tools p:hover {
-    filter: brightness(0.8);
-}
-
-#gradientGeneratorP {
-   background-image: url("images/gradient-generator.jpeg");
-}
-
-#boxShadowP {
-    background-image: url("images/box-shadow.jpeg");
-}
-
-#filterGeneratorP {
-    background-image: url("images/filter-generator.jpeg");
+    box-shadow: 0 0 0 4px #0044ff9c;
 }
 
 .copyDiv {
@@ -134,6 +141,45 @@ header .menu {
 code {
     font-family: monospace;
     font-size: 1.3em;
+}
+
+.ad {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.divCode {
+    margin: 10px;
+    background: #1c1c1c;
+    color: white;
+    width: 80vw;
+    max-width: 550px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+#code {
+    height: 80px;
+    font-family: monospace;
+}
+
+#btnCopy {
+    align-self: flex-end;
+    padding: 0;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#btnCopy img {
+    width: 30px;
+    padding: 4px;
 }
 
 @media (max-width: 400px) {
