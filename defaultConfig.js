@@ -2,7 +2,7 @@ const body = document.body
 const bodyElements = [...body.children]
 const header = document.createElement("header")
 header.translate = false
-header.innerHTML = `<h1><a href="../index.html">CSS Tools</a></h1>
+header.innerHTML = `<h1><a href="../">CSS Tools</a></h1>
 <nav id="nav">
     <a href="../gradient-generator">Gradient</a>
     <a href="../box-shadow-generator">Box-Shadow</a>
