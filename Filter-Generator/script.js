@@ -3,6 +3,7 @@ var amountInput = document.getElementById("amount")
 var resultDiv = document.getElementById("result")
 var codeDiv = document.getElementById("code")
 var amountValue = document.getElementById("amountValue")
+const codeElement = document.querySelector("#code")
 var code
 
 filterSelect.addEventListener("change", function () {
