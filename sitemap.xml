@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://css-tools.netlify.app/</loc>
-  <lastmod>2022-03-14T16:04:50+00:00</lastmod>
+<loc>https://css-tools.netlify.app/</loc>
+<changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>https://css-tools.netlify.app/gradient-generator/</loc>
-  <lastmod>2022-03-14T16:04:50+00:00</lastmod>
+<loc>https://css-tools.netlify.app/gradient-generator/</loc>
+<changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>https://css-tools.netlify.app/box-shadow-generator/</loc>
-  <lastmod>2022-03-14T16:04:50+00:00</lastmod>
+<loc>https://css-tools.netlify.app/box-shadow-generator/</loc>
+<changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>https://css-tools.netlify.app/filter-generator/</loc>
-  <lastmod>2022-03-14T16:04:50+00:00</lastmod>
+<loc>https://css-tools.netlify.app/filter-generator/</loc>
+<changefreq>monthly</changefreq>
 </url>
 </urlset>
