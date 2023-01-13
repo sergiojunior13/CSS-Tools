@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        @apply appearance-none;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: #0d0d0d #3b3b3b;
+}
+
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: #3b3b3b;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0d0d0d;
+    border-radius: 10px;
+}
+
+.react-colorful__alpha .react-colorful__alpha-pointer, .react-colorful__hue .react-colorful__hue-pointer {
+    height: 25px;
+    width: 15px;
+    border-radius: 8px;
+}
+
+.react-colorful__interactive .react-colorful__saturation-pointer {
+    height: 15px;
+    width: 15px;
+}
