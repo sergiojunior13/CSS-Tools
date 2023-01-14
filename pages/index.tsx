@@ -10,7 +10,7 @@ function App() {
         id="home"
         className="h-[90vh] flex flex-col items-center justify-center p-5"
       >
-        <h1 className="font-bold text-4xl leading-tight text-zinc-50 mt-auto">
+        <h1 className="font-bold text-4xl text-center leading-tight text-zinc-50 mt-auto">
           Online{" "}
           <ColorText
             Variant="span"
@@ -28,7 +28,7 @@ function App() {
         <ColorText className="my-10" Variant="h1">
           Tools
         </ColorText>
-        <ul className="grid grid-cols-4 gap-4 w-[60%] mx-auto">
+        <ul className="flex flex-wrap items-center justify-center sm:grid grid-cols-4 gap-4 w-[60%] mx-auto">
           {links.map(({ to, name, Icon }) => (
             <Link href={to} key={to}>
               <div

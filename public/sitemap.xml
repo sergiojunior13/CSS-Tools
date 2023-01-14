@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.google.com/schemas/sitemap/0.84" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-<loc>https://css-tools.netlify.app/</loc>
-<changefreq>monthly</changefreq>
+  <loc>https://tools-css.vercel.app/</loc>
+  <lastmod>2023-01-14T00:13:04+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-<loc>https://css-tools.netlify.app/gradient-generator/</loc>
-<changefreq>monthly</changefreq>
+  <loc>https://tools-css.vercel.app/filter-generator</loc>
+  <lastmod>2023-01-14T00:13:04+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://css-tools.netlify.app/box-shadow-generator/</loc>
-<changefreq>monthly</changefreq>
+  <loc>https://tools-css.vercel.app/box-shadow-generator</loc>
+  <lastmod>2023-01-14T00:13:04+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://css-tools.netlify.app/filter-generator/</loc>
-<changefreq>monthly</changefreq>
+  <loc>https://tools-css.vercel.app/gradient-generator</loc>
+  <lastmod>2023-01-14T00:13:04+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://css-tools.netlify.app/border-radius-generator/</loc>
-<changefreq>monthly</changefreq>
+  <loc>https://tools-css.vercel.app/border-radius-generator</loc>
+  <lastmod>2023-01-14T00:13:04+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
+
+
 </urlset>
