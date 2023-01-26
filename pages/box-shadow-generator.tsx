@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { ChangeEvent, useEffect, useState } from "react";
 import AxisBox from "../src/components/AxisBox";
 import ColorPicker from "../src/components/ColorPicker";
@@ -43,6 +44,9 @@ export default function BoxShadow() {
 
   return (
     <main className="flex flex-col p-4 items-center justify-center my-5 text-white">
+      <Head>
+        <title>Box Shadow Generator - CSS Tools</title>
+      </Head>
       <ColorText className="mb-8" Variant="h2">
         Box Shadow Generator
       </ColorText>

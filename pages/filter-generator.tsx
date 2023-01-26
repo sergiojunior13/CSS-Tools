@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
@@ -41,6 +42,9 @@ export default function Filter() {
 
   return (
     <main className="flex flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-5xl w-11/12 sm:w-full m-auto">
+      <Head>
+        <title>Filter Generator - CSS Tools</title>
+      </Head>
       <ColorText className="mb-3" Variant="h2">
         Filter Generator
       </ColorText>
@@ -133,6 +137,7 @@ export default function Filter() {
             className="rounded-t-lg"
             src="https://raw.githubusercontent.com/SergioJunior13/Imagens/main/beach-418742_960_720.webp"
             style={{ filter: code }}
+            alt="example image"
           />
           <CssCode
             truncate={false}
@@ -142,25 +147,5 @@ export default function Filter() {
         </div>
       </div>
     </main>
-  );
-}
-
-interface FiltersInputsProps {
-  filters: {
-    value: string | number;
-    type: string;
-    max?: number;
-    changeFunction: (value: any) => void;
-    filter: string;
-  }[];
-}
-
-function FiltersInputs({ filters }: FiltersInputsProps) {
-  return (
-    <div>
-      {filters.map(filter => {
-        return 2;
-      })}
-    </div>
   );
 }

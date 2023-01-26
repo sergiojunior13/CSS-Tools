@@ -2,9 +2,8 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="pt-br" className="bg-zinc-800">
+    <Html lang="en-us" className="bg-zinc-800">
       <Head>
-        <title>CSS Tools</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

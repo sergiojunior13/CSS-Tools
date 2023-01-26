@@ -42,14 +42,14 @@ function Header() {
   return (
     <header
       translate="no"
-      className="w-full bg-blue-fade flex justify-between p-2"
+      className="w-full bg-blue-fade flex justify-between p-2 px-4"
     >
       <Link href="/">
-        <h1 className="text-5xl font-bold text-white">CSS Tools</h1>
+        <h1 className="text-4xl font-bold text-white">CSS Tools</h1>
       </Link>
 
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
+        <DropdownMenu.Trigger title="menu">
           <List size={24} color="#fff" weight="bold" />
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>

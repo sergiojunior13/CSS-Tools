@@ -10,6 +10,7 @@ import { HexAlphaColorPicker } from "react-colorful";
 import { Trash } from "phosphor-react";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorList from "../src/components/ColorList";
+import Head from "next/head";
 
 export default function Gradient() {
   const [color, setColor] = useState("#0539f5ff");
@@ -77,6 +78,9 @@ export default function Gradient() {
 
   return (
     <main className="flex flex-col items-center justify-center my-5 text-white p-4">
+      <Head>
+        <title>Gradient Generator - CSS Tools</title>
+      </Head>
       <ColorText className="mb-5" Variant="h2">
         Gradient Generator
       </ColorText>
