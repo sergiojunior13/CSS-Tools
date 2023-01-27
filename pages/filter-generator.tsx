@@ -1,8 +1,10 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { useState } from "react";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
 import InputRangeBox from "../src/components/Inputs/InputRange";
+import ExampleImage from "../public/example-image.jpg";
+import Image from "next/image";
 
 export default function Filter() {
   const [blur, setBlur] = useState(0);
@@ -42,9 +44,10 @@ export default function Filter() {
 
   return (
     <main className="flex flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-5xl w-11/12 sm:w-full m-auto">
-      <Head>
-        <title>Filter Generator - CSS Tools</title>
-      </Head>
+      <NextSeo
+        title="Filter Generator - CSS Tools"
+        description="A complete and free CSS Filter Generator to help you build your website."
+      />
       <ColorText className="mb-3" Variant="h2">
         Filter Generator
       </ColorText>
@@ -133,9 +136,11 @@ export default function Filter() {
           {/*Dropsahdw*/}
         </div>
         <div className="self-end flex flex-col rounded-lg w-full sm:w-2/5 sm:relative sticky top-0 h-min shadow-neomorphism bg-zinc-800">
-          <img
-            className="rounded-t-lg"
-            src="https://raw.githubusercontent.com/SergioJunior13/Imagens/main/beach-418742_960_720.webp"
+          <Image
+            width={640}
+            height={640}
+            className="rounded-t-lg aspect-square"
+            src={ExampleImage}
             style={{ filter: code }}
             alt="example image"
           />

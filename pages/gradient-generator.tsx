@@ -5,12 +5,9 @@ import InputRangeBox from "../src/components/Inputs/InputRange";
 import InputRadioBox from "../src/components/Inputs/InputRadio";
 
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
-
-import { HexAlphaColorPicker } from "react-colorful";
-import { Trash } from "phosphor-react";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorList from "../src/components/ColorList";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 export default function Gradient() {
   const [color, setColor] = useState("#0539f5ff");
@@ -78,9 +75,10 @@ export default function Gradient() {
 
   return (
     <main className="flex flex-col items-center justify-center my-5 text-white p-4">
-      <Head>
-        <title>Gradient Generator - CSS Tools</title>
-      </Head>
+      <NextSeo
+        title="Gradient Generator - CSS Tools"
+        description="A complete and free CSS Gradient Generator to help you build your website."
+      />
       <ColorText className="mb-5" Variant="h2">
         Gradient Generator
       </ColorText>

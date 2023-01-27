@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import ColorText from "../src/components/ColorText";
@@ -46,9 +46,10 @@ export default function BorderRadius() {
 
   return (
     <main className="flex flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-xl m-auto">
-      <Head>
-        <title>Border Radius Generator - CSS Tools</title>
-      </Head>
+      <NextSeo
+        title="Border Radius Generator - CSS Tools"
+        description="A complete and free CSS Border Radius Generator to help you build your website."
+      />
       <ColorText className="mb-3" Variant="h2">
         Border Radius Generator
       </ColorText>

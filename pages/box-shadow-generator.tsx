@@ -1,11 +1,10 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { ChangeEvent, useEffect, useState } from "react";
 import AxisBox from "../src/components/AxisBox";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
 import InputCheckBox from "../src/components/Inputs/InputCheckBox";
-import InputRadioBox from "../src/components/Inputs/InputRadio";
 import InputRangeBox from "../src/components/Inputs/InputRange";
 
 export default function BoxShadow() {
@@ -44,9 +43,10 @@ export default function BoxShadow() {
 
   return (
     <main className="flex flex-col p-4 items-center justify-center my-5 text-white">
-      <Head>
-        <title>Box Shadow Generator - CSS Tools</title>
-      </Head>
+      <NextSeo
+        title="Box Shadow Generator - CSS Tools"
+        description="A complete and free CSS Box Shadow Generator to help you build your website."
+      />
       <ColorText className="mb-8" Variant="h2">
         Box Shadow Generator
       </ColorText>
