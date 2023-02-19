@@ -4,7 +4,8 @@ import Footer from "../src/components/Footer";
 import { NextSeo } from "next-seo";
 
 const title = "CSS Tools";
-const description = "Free CSS tools to style your website.";
+const description =
+  "Do you need to create beautiful styles? use this website with free CSS tools to generate incredible CSS styles!";
 const url = "https://tools-css.vercel.app/";
 
 export default function MyApp({ Component, pageProps }) {
