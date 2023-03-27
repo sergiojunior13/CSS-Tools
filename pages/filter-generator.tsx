@@ -45,8 +45,8 @@ export default function Filter() {
   return (
     <main className="flex flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-5xl w-11/12 sm:w-full m-auto">
       <NextSeo
-        title="Filter Generator - CSS Tools"
-        description="A complete and free CSS Filter Generator to help you build your website."
+        title="Filter Generator | CSS Tools"
+        description="Quickly generate CSS FILTERS with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
       <ColorText className="mb-3" Variant="h2">
         Filter Generator

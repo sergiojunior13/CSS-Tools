@@ -44,8 +44,8 @@ export default function BoxShadow() {
   return (
     <main className="flex flex-col p-4 items-center justify-center my-5 text-white">
       <NextSeo
-        title="Box Shadow Generator - CSS Tools"
-        description="A complete and free CSS Box Shadow Generator to help you build your website."
+        title="Box Shadow Generator | CSS Tools"
+        description="Quickly generate CSS BOX-SHADOW with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
       <ColorText className="mb-8" Variant="h2">
         Box Shadow Generator

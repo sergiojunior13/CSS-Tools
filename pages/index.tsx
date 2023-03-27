@@ -8,27 +8,33 @@ function App() {
     <main className="bg-zinc-800">
       <div
         id="home"
-        className="h-[90vh] flex flex-col items-center justify-center p-5"
+        className="h-[100vh] flex flex-col items-center justify-center p-5 bg-background bg-opacity-5 bg-zinc-700"
       >
-        <h1 className="font-bold text-4xl text-center leading-tight text-zinc-50 mt-auto">
-          Online{" "}
+        <h1 className="font-bold text-[2.35rem] text-center leading-tight text-zinc-50 mt-auto">
+          Elevate your website design with powerful{" "}
           <ColorText
             Variant="span"
             className="bg-clip-text bg-orange-fade text-transparent"
           >
             CSS tools
-          </ColorText>{" "}
-          to help you to make your website.
+          </ColorText>
+          .
         </h1>
-        <a className="mt-auto animate-bounce" href="#tools">
-          <CaretDown size={32} color="blue" />
+        <a className="mt-auto animate-bounce text-orange-600" href="#tools">
+          <CaretDown size={32} />
         </a>
       </div>
       <div id="tools" className="p-10 flex flex-col items-center">
-        <ColorText className="my-10" Variant="h1">
+        <ColorText
+          Variant="span"
+          className="text-base font-semibold tracking-widest uppercase"
+        >
           Tools
         </ColorText>
-        <ul className="flex flex-wrap items-center justify-center sm:grid grid-cols-4 gap-4 w-[60%] mx-auto">
+        <h2 className="mb-10 font-bold text-4xl text-center text-zinc-50">
+          See these incredible tools
+        </h2>
+        <ul className="flex flex-wrap items-center justify-center lg:grid grid-cols-4 gap-4 mx-auto">
           {links.map(({ to, name, Icon }) => (
             <Link href={to} key={to}>
               <div

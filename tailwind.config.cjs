@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     backgroundImage: {
       "orange-fade": "linear-gradient(125deg, #F97316FF, #C95D12FF)",
-      "blue-fade": "linear-gradient(5deg, #0539f5, #5095f5);",
+      background: "url(/background.jpg)",
     },
     extend: {
       backgroundColor: {

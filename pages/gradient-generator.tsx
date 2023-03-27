@@ -76,8 +76,8 @@ export default function Gradient() {
   return (
     <main className="flex flex-col items-center justify-center my-5 text-white p-4">
       <NextSeo
-        title="Gradient Generator - CSS Tools"
-        description="A complete and free CSS Gradient Generator to help you build your website."
+        title="Gradient Generator | CSS Tools"
+        description="Quickly generate CSS GRADIENTS with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
       <ColorText className="mb-5" Variant="h2">
         Gradient Generator

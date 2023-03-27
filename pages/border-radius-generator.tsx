@@ -47,8 +47,8 @@ export default function BorderRadius() {
   return (
     <main className="flex flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-xl m-auto">
       <NextSeo
-        title="Border Radius Generator - CSS Tools"
-        description="A complete and free CSS Border Radius Generator to help you build your website."
+        title="Border Radius Generator | CSS Tools"
+        description="Quickly generate CSS BORDER-RADIUS with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
       <ColorText className="mb-3" Variant="h2">
         Border Radius Generator

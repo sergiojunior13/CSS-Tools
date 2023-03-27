@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   BoundingBox,
@@ -38,14 +40,24 @@ export const links = [
     Icon: BoundingBox,
   },
 ];
+
 function Header() {
   return (
     <header
       translate="no"
-      className="w-full bg-blue-fade flex justify-between p-2 px-4"
+      className={
+        (usePathname() === "/" ? "absolute top-0 " : "") +
+        "w-full flex justify-between py-6 px-4"
+      }
     >
       <Link href="/">
-        <h1 className="text-4xl font-bold text-white">CSS Tools</h1>
+        <Image
+          alt="site-logo"
+          src={"/logo-color.png"}
+          width={304}
+          height={59}
+          className="w-[200px]"
+        />
       </Link>
 
       <DropdownMenu.Root>
@@ -57,7 +69,7 @@ function Header() {
             {links.map(({ to }) => (
               <DropdownMenu.Item
                 key={to}
-                className="outline-0 hover:bg-blue-500 hover:text-white px-3"
+                className="outline-0 hover:bg-orange-500 hover:text-white px-3"
               >
                 <Link href={to} className="inline-block w-full">
                   {to.charAt(0).toUpperCase() +
