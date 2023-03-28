@@ -3,9 +3,9 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import { NextSeo } from "next-seo";
 
-const title = "CSS Tools";
+const title = "CSS Tools | FREE & Online CSS-3 Generator";
 const description =
-  "Do you need to create beautiful styles? use this website with free CSS tools to generate incredible CSS styles!";
+  "Do you need to create beautiful designs? use this website with free CSS tools to generate incredible styles!";
 const url = "https://tools-css.vercel.app/";
 
 export default function MyApp({ Component, pageProps }) {
