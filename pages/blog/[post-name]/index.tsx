@@ -1,12 +1,16 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import TableOfContents from "../../../src/components/TableOfContents";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
 export default function Post() {
-  const { query, asPath, basePath } = useRouter();
+  useEffect(() => {
+    setIsMobile(window.screen.width < 768);
+  }, []);
+
+  const { query, asPath } = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
   const url = "https://tools-css.vercel.app/" + asPath.slice(1);
-  console.log(url);
 
   const postName = query["post-name"]
     ?.toString()
@@ -16,7 +20,7 @@ export default function Post() {
   const articleRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="flex md:flex-row flex-col-reverse justify-between py-14 px-5 text-zinc-50 bg-zinc-900 w-full max-w-screen-2xl relative">
+    <main className="flex md:flex-row flex-col-reverse justify-between md:py-14 py-6 px-5 text-zinc-50 bg-zinc-900 w-full max-w-screen-2xl relative">
       <NextSeo
         title={`${postName} - CSS Tools Blog`}
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
@@ -31,14 +35,19 @@ export default function Post() {
         datePublished="2023-04-12T00:00:00.000Z"
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
       />
-      <aside className="w-1/5 sticky top-1/2 -translate-y-1/2 self-start h-[70vh] p-5">
-        <div className="ad h-full w-full bg-zinc-700">Ad</div>
-      </aside>
-      <article className="text-zinc-300 w-3/5 max-w-3xl" ref={articleRef}>
+      {!isMobile && (
+        <aside className="w-1/5 sticky top-1/2 -translate-y-1/2 self-start h-[70vh] p-5">
+          <div className="ad h-full w-full bg-zinc-700">Ad</div>
+        </aside>
+      )}
+      <article
+        className="text-zinc-300 text-lg md:w-3/5 max-w-3xl"
+        ref={articleRef}
+      >
         <div className="ad w-full h-48 bg-zinc-700 mb-5">Ad</div>
         <time
           dateTime="2023-03-28T14:30:00.000Z"
-          className="text-sm text-zinc-400"
+          className="md:text-sm text-base text-zinc-400"
         >
           Sunday, October 19, 2023
         </time>
@@ -161,11 +170,13 @@ export default function Post() {
           <div className="ad w-full h-48 bg-zinc-700 mt-5">Ad</div>
         </footer>
       </article>
-      <nav className="flex flex-col gap-4 w-1/5 p-5 sticky top-14 self-start">
-        <label className="text-xl font-semibold">Quick Nav</label>
-        <TableOfContents articleRef={articleRef} />
-        <div className="ad bg-zinc-700 w-full h-[30vh]">Ad</div>
-      </nav>
+      {!isMobile && (
+        <nav className="flex flex-col gap-4 w-1/5 p-5 sticky top-14 self-start">
+          <label className="text-xl font-semibold">Quick Nav</label>
+          <TableOfContents articleRef={articleRef} />
+          <div className="ad bg-zinc-700 w-full h-[30vh]">Ad</div>
+        </nav>
+      )}
     </main>
   );
 }
@@ -191,7 +202,7 @@ function PostHeading({ heading, children }: PostHeadingProps) {
     case "h2":
       return (
         <h2
-          className="text-zinc-50 text-2xl font-semibold mt-8 mb-2 first-letter:uppercase"
+          className="text-zinc-50 md:text-2xl text-3xl font-semibold mt-8 mb-2 first-letter:uppercase"
           id={id}
         >
           {children}
@@ -200,7 +211,7 @@ function PostHeading({ heading, children }: PostHeadingProps) {
     case "h3":
       return (
         <h3
-          className="text-zinc-50 text-xl font-semibold mt-5 mb-1 first-letter:uppercase"
+          className="text-zinc-50 md:text-xl text-2xl font-semibold mt-5 mb-1 first-letter:uppercase"
           id={id}
         >
           {children}

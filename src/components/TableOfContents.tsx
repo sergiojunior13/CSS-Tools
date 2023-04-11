@@ -1,5 +1,6 @@
 import { RefObject, useEffect, useState } from "react";
 import Toc from "react-toc";
+import {} from "next";
 
 interface TableOfContentsProps {
   articleRef: RefObject<HTMLDivElement>;
