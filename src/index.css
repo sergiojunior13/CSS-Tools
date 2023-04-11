@@ -13,6 +13,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-color: #0d0d0d #3b3b3b;
+    scroll-padding-top: 8px;
 }
 
 /* Chrome, Edge, and Safari */

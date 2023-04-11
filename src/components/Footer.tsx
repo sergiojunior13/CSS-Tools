@@ -4,24 +4,27 @@ import { links } from "./Header";
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-900 flex flex-col text-white/80 p-4 gap-8 text-center text-xs">
+    <footer className="bg-zinc-950 flex flex-col text-white/80 p-4 gap-8 text-center text-xs">
       <div className="grid grid-cols-2 place-items-center">
-        <Image
-          alt="site-logo"
-          src="/logo-white.png"
-          width={100}
-          height={100}
-          className="w-20"
-        />
+        <Link href="/">
+          <Image
+            alt="site-logo"
+            src="/logo-white.png"
+            width={100}
+            height={100}
+            className="w-20"
+          />
+        </Link>
         <div className="text-start">
-          <label className="text-lg font-semibold text-zinc-600">Menu</label>
-          <nav className="flex flex-col gap-1 text-orange-500">
-            {links.map(link => (
-              <Link key={link.to} href={link.to}>
-                {link.to.charAt(0).toUpperCase() +
-                  link.to.slice(1).replaceAll("-", " ")}
+          <nav className="flex flex-col gap-[1px] text-orange-500 text-sm">
+            <label className="text-zinc-600 mt-2 text-xs">Tools</label>
+            {links.map(({ name, to }) => (
+              <Link key={to} href={to}>
+                {name.toLowerCase().charAt(0).toUpperCase() + name.slice(1)}
               </Link>
             ))}
+            <label className="text-zinc-600 mt-2 text-xs">Blog</label>
+            <Link href="/blog">Blog</Link>
           </nav>
         </div>
       </div>
