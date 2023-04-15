@@ -2,33 +2,43 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import TableOfContents from "../../../src/components/TableOfContents";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { getPostData } from "../../../lib/posts";
+import dayjs from "dayjs";
+import matter from "gray-matter";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Code, CopyBlock, dracula } from "react-code-blocks";
 
-export default function Post() {
+interface postDataProps extends matter.GrayMatterFile<string> {
+  data: {
+    date: string;
+    title: string;
+    excerpt: string;
+  };
+}
+
+export default function Post({ content, data }: postDataProps) {
   useEffect(() => {
     setIsMobile(window.screen.width < 768);
   }, []);
 
-  const { query, asPath } = useRouter();
+  const { title, date } = data;
+
+  const { asPath } = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const url = "https://tools-css.vercel.app/" + asPath.slice(1);
 
-  const postName = query["post-name"]
-    ?.toString()
-    .split("-")
-    .map(word => word[0].toUpperCase() + word.slice(1))
-    .join(" ");
   const articleRef = useRef<HTMLDivElement>(null);
 
   return (
     <main className="flex md:flex-row flex-col-reverse justify-between md:py-14 py-6 px-5 text-zinc-50 bg-zinc-900 w-full max-w-screen-2xl relative">
       <NextSeo
-        title={`${postName} - CSS Tools Blog`}
+        title={`${title} - CSS Tools Blog`}
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
         openGraph={{ url: url }}
       />
       <ArticleJsonLd
         type="Article"
-        title={`${postName} - CSS Tools Blog`}
+        title={`${title} - CSS Tools Blog`}
         url={url}
         images={["https://tools-css.vercel.app/CSS%20Tools%201280x1280.png"]}
         authorName="CSS Tools"
@@ -49,123 +59,46 @@ export default function Post() {
           dateTime="2023-03-28T14:30:00.000Z"
           className="md:text-sm text-base text-zinc-400"
         >
-          Sunday, October 19, 2023
+          {dayjs(date).format("dddd, MMMM DD, YYYY")}
         </time>
         <PostHeading heading="h1">
-          {postName
-            ? postName?.charAt(0) + postName?.slice(1).toLowerCase()
-            : "Post Title"}
+          {title
+            .split(" ")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")}
         </PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          animi debitis aliquam excepturi eveniet nesciunt vitae. Possimus, ad,
-          maiores consequatur qui iusto doloremque deleniti, ex tempore
-          consequuntur doloribus distinctio facilis.
-        </p>
+        <ReactMarkdown
+          components={{
+            h2({ children }) {
+              return <PostHeading heading="h2" children={children} />;
+            },
+            h3({ children }) {
+              return <PostHeading heading="h3" children={children} />;
+            },
+            code({ children, inline, className, ...props }) {
+              const language = /language-(\w+)/.exec(className || "");
 
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <PostHeading heading="h2">Sub Heading 1</PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, expedita
-          accusamus deleniti nobis sapiente earum ipsa quos suscipit iure eum
-          unde veniam velit iusto ullam repellendus aspernatur dolor, tempora
-          neque!
-        </p>
-        <PostHeading heading="h3">Sub sub Heading 1</PostHeading>
-        <PostHeading heading="h3">Sub sub Heading 2</PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          deleniti molestiae quis molestias, unde dolores architecto, vero
-          accusamus perferendis incidunt ab, necessitatibus est? Eaque nemo in
-          natus hic commodi nisi accusantium ipsum amet ad officia optio non
-          ducimus similique dolorum sed, repudiandae fugiat consequuntur quo est
-          eveniet, accusamus totam rerum illum nulla? Nemo modi delectus ea
-          dignissimos voluptatibus rerum nulla! Voluptatem quibusdam tempora
-          animi! Odit, vitae rem at quisquam tenetur accusamus quo sit minima
-          voluptatem architecto obcaecati ipsum modi nisi similique, quia nulla
-          ex dolorem fugiat debitis alias fugit nesciunt repudiandae! Vitae
-          iste, voluptate, repudiandae cum ut praesentium recusandae deserunt,
-          debitis aperiam similique pariatur quas numquam et iusto maiores
-          possimus quaerat saepe laudantium facilis labore exercitationem
-          eligendi? Eum, consequuntur perspiciatis.
-        </p>
-
-        <PostHeading heading="h2">Sub Heading 2</PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          deleniti molestiae quis molestias, unde dolores architecto, vero
-          accusamus perferendis incidunt ab, necessitatibus est? Eaque nemo in
-          natus hic commodi nisi accusantium ipsum amet ad officia optio non
-          ducimus similique dolorum sed, repudiandae fugiat consequuntur quo est
-          eveniet, accusamus totam rerum illum nulla? Nemo modi delectus ea
-          dignissimos voluptatibus rerum nulla! Voluptatem quibusdam tempora
-          animi! Odit, vitae rem at quisquam tenetur accusamus quo sit minima
-          voluptatem architecto obcaecati ipsum modi nisi similique, quia nulla
-          ex dolorem fugiat debitis alias fugit nesciunt repudiandae! Vitae
-          iste, voluptate, repudiandae cum ut praesentium recusandae deserunt,
-          debitis aperiam similique pariatur quas numquam et iusto maiores
-          possimus quaerat saepe laudantium facilis labore exercitationem
-          eligendi? Eum, consequuntur perspiciatis.
-        </p>
-        <PostHeading heading="h3">Lorem ipsum dolor</PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
-          dolorem recusandae porro cupiditate vel harum magnam dicta delectus,
-          ea nulla aliquid quaerat dolore vero minus beatae soluta fugit illo
-          quidem!
-        </p>
-
-        <PostHeading heading="h2">Sub Heading 3</PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          deleniti molestiae quis molestias, unde dolores architecto, vero
-          accusamus perferendis incidunt ab, necessitatibus est? Eaque nemo in
-          natus hic commodi nisi accusantium ipsum amet ad officia optio non
-          ducimus similique dolorum sed, repudiandae fugiat consequuntur quo est
-          eveniet, accusamus totam rerum illum nulla? Nemo modi delectus ea
-          dignissimos voluptatibus rerum nulla! Voluptatem quibusdam tempora
-          animi! Odit, vitae rem at quisquam tenetur accusamus quo sit minima
-          voluptatem architecto obcaecati ipsum modi nisi similique, quia nulla
-          ex dolorem fugiat debitis alias fugit nesciunt repudiandae! Vitae
-          iste, voluptate, repudiandae cum ut praesentium recusandae deserunt,
-          debitis aperiam similique pariatur quas numquam et iusto maiores
-          possimus quaerat saepe laudantium facilis labore exercitationem
-          eligendi? Eum, consequuntur perspiciatis.
-        </p>
-
-        <PostHeading heading="h2">sub Heading 4</PostHeading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          deleniti molestiae quis molestias, unde dolores architecto, vero
-          accusamus perferendis incidunt ab, necessitatibus est? Eaque nemo in
-          natus hic commodi nisi accusantium ipsum amet ad officia optio non
-          ducimus similique dolorum sed, repudiandae fugiat consequuntur quo est
-          eveniet, accusamus totam rerum illum nulla? Nemo modi delectus ea
-          dignissimos voluptatibus rerum nulla! Voluptatem quibusdam tempora
-          animi! Odit, vitae rem at quisquam tenetur accusamus quo sit minima
-          voluptatem architecto obcaecati ipsum modi nisi similique, quia nulla
-          ex dolorem fugiat debitis alias fugit nesciunt repudiandae! Vitae
-          iste, voluptate, repudiandae cum ut praesentium recusandae deserunt,
-          debitis aperiam similique pariatur quas numquam et iusto maiores
-          possimus quaerat saepe laudantium facilis labore exercitationem
-          eligendi? Eum, consequuntur perspiciatis.
-        </p>
+              return inline ? (
+                <Code
+                  {...props}
+                  text={children}
+                  language={language ? language[1] : "css"}
+                  theme={dracula}
+                />
+              ) : (
+                <CopyBlock
+                  {...props}
+                  customStyle={{ marginTop: "8px", marginBottom: "8px" }}
+                  text={children}
+                  language={language ? language[1] : "css"}
+                  theme={dracula}
+                />
+              );
+            },
+          }}
+        >
+          {content}
+        </ReactMarkdown>
         <footer>
           <div className="ad w-full h-48 bg-zinc-700 mt-5">Ad</div>
         </footer>
@@ -218,4 +151,24 @@ function PostHeading({ heading, children }: PostHeadingProps) {
         </h3>
       );
   }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context: any) {
+  const slug = context.params["post-name"];
+
+  const postData = getPostData(slug);
+
+  return {
+    props: {
+      content: postData.content,
+      data: postData.data,
+    },
+  };
 }

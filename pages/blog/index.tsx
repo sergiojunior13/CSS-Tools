@@ -2,8 +2,9 @@ import { ArticleJsonLd, NextSeo } from "next-seo";
 import PostPreview from "../../src/components/blog/PostPreview";
 import ColorText from "../../src/components/ColorText";
 import SearchToolbar from "../../src/components/SearchToolbar";
+import { getPostsPreview } from "../../lib/posts";
 
-export default function Blog() {
+export default function Blog({ postsData }: { postsData: postsDataProps }) {
   return (
     <main className="bg-zinc-800">
       <NextSeo
@@ -39,10 +40,15 @@ export default function Blog() {
           <div className="flex w-full">
             <TimeLine />
             <div className="flex flex-col gap-3">
-              <PostPreview />
-              <PostPreview />
-              <PostPreview />
-              <PostPreview />
+              {postsData.map(({ data, id }) => (
+                <PostPreview
+                  title={data.title}
+                  date={data.date}
+                  excerpt={data.excerpt}
+                  slug={id}
+                  key={id}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -52,5 +58,24 @@ export default function Blog() {
 }
 
 function TimeLine() {
-  return <div className="h-full w-4 rounded-lg bg-zinc-700 md:mr-10 mr-3" />;
+  return <div className="h-full w-2 rounded-lg bg-zinc-700 md:mr-10 mr-3" />;
+}
+
+type postsDataProps = {
+  id: string;
+  data: {
+    date: string;
+    title: string;
+    excerpt: string;
+  };
+}[];
+
+export async function getStaticProps() {
+  const postsData = getPostsPreview();
+
+  return {
+    props: {
+      postsData,
+    },
+  };
 }
