@@ -167,6 +167,7 @@ export async function getStaticProps(context: any) {
   const slug = context.params["post-name"];
 
   const postData = getPostData(slug);
+  if (!postData) return { notFound: true };
 
   return {
     props: {

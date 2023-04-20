@@ -9,7 +9,7 @@ export function getAllPostsNames() {
     .readdirSync(postsDirectory)
     .map(
       postName =>
-        process.env.NEXT_PUBLIC_URL + "blog/" + postName.replace(/\.md$/, "")
+        `${process.env.NEXT_PUBLIC_URL}blog/${postName.replace(/\.md$/, "")}/`
     );
 }
 
@@ -29,9 +29,13 @@ function getAllPostsData() {
 
 export function getPostData(id: string) {
   const postPath = path.join(postsDirectory, id + ".md");
-  const postData = fs.readFileSync(postPath, "utf8");
 
-  return matter(postData);
+  try {
+    const postData = fs.readFileSync(postPath, "utf8");
+    return matter(postData);
+  } catch (error) {
+    return false;
+  }
 }
 
 export function getPostsPreview() {
