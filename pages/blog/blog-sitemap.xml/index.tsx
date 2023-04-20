@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import { getServerSideSitemap } from "next-sitemap";
-import { getAllPostsNames } from "../lib/posts";
+import { getAllPostsNames } from "../../../lib/posts";
 
 export default function GenerateSitemap() {}
 

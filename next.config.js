@@ -4,12 +4,7 @@
 
 module.exports = {
   trailingSlash: true,
-  rewrites: async () => [
-    {
-      source: "/dynamic-posts-sitemap.xml",
-      destination: "/dynamic-posts-sitemap",
-    },
-  ],
+
   headers: async function () {
     return [
       {
