@@ -7,7 +7,10 @@ const postsDirectory = path.join(process.cwd(), "posts");
 export function getAllPostsNames() {
   return fs
     .readdirSync(postsDirectory)
-    .map(postName => path.join(postsDirectory, postName.replace(/\.md$/, "")));
+    .map(
+      postName =>
+        process.env.NEXT_PUBLIC_URL + "blog/" + postName.replace(/\.md$/, "")
+    );
 }
 
 function getAllPostsData() {

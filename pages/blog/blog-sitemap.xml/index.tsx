@@ -1,17 +1,13 @@
 import { GetServerSidePropsContext } from "next";
-import { getServerSideSitemap } from "next-sitemap";
+import { getServerSideSitemapLegacy } from "next-sitemap";
 import { getAllPostsNames } from "../../../lib/posts";
 
 export default function GenerateSitemap() {}
 
-export async function getServerSideProps({
-  ctx,
-}: {
-  ctx: GetServerSidePropsContext;
-}) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const postsURL = getAllPostsNames();
 
-  return getServerSideSitemap(
+  return getServerSideSitemapLegacy(
     ctx,
     postsURL.map(postURL => {
       return {
