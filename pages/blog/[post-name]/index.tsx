@@ -16,6 +16,8 @@ interface postDataProps extends matter.GrayMatterFile<string> {
   };
 }
 
+const rootUrl = process.env.NEXT_PUBLIC_URL;
+
 export default function Post({ content, data }: postDataProps) {
   useEffect(() => {
     setIsMobile(window.screen.width < 768);
@@ -25,7 +27,7 @@ export default function Post({ content, data }: postDataProps) {
 
   const { asPath } = useRouter();
   const [isMobile, setIsMobile] = useState(false);
-  const url = "https://tools-css.vercel.app/" + asPath.slice(1);
+  const url = rootUrl + asPath.slice(1);
 
   const articleRef = useRef<HTMLDivElement>(null);
 
@@ -34,13 +36,14 @@ export default function Post({ content, data }: postDataProps) {
       <NextSeo
         title={`${title} - CSS Tools Blog`}
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
-        openGraph={{ url: url }}
+        openGraph={{ url: url, title }}
+        canonical={url}
       />
       <ArticleJsonLd
         type="Article"
         title={`${title} - CSS Tools Blog`}
         url={url}
-        images={["https://tools-css.vercel.app/CSS%20Tools%201280x1280.png"]}
+        images={[`${rootUrl}CSS%20Tools%201280x1280.png`]}
         authorName="CSS Tools"
         datePublished="2023-04-12T00:00:00.000Z"
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"

@@ -6,7 +6,7 @@ import { NextSeo } from "next-seo";
 const title = "CSS Tools | FREE & Online CSS-3 Generator";
 const description =
   "Do you need to create beautiful designs? use this website with free CSS tools to generate incredible styles!";
-const url = "https://tools-css.vercel.app/";
+const url = process.env.NEXT_PUBLIC_URL;
 
 export default function MyApp({ Component, pageProps }) {
   return (

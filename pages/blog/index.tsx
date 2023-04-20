@@ -3,6 +3,9 @@ import PostPreview from "../../src/components/blog/PostPreview";
 import ColorText from "../../src/components/ColorText";
 import SearchToolbar from "../../src/components/SearchToolbar";
 import { getPostsPreview } from "../../lib/posts";
+import path from "path";
+
+const url = process.env.NEXT_PUBLIC_URL;
 
 export default function Blog({ postsData }: { postsData: postsDataProps }) {
   return (
@@ -14,8 +17,8 @@ export default function Blog({ postsData }: { postsData: postsDataProps }) {
       <ArticleJsonLd
         type="Blog"
         title="Blog | CSS Tools"
-        url="https://tools-css.vercel.app/blog"
-        images={["https://tools-css.vercel.app/CSS%20Tools%201280x1280.png"]}
+        url={`${url}blog`}
+        images={[`${url}CSS%20Tools%201280x1280.png`]}
         authorName="CSS Tools"
         datePublished="2023-04-12T00:00:00.000Z"
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"

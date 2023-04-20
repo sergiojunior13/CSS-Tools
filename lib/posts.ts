@@ -4,6 +4,12 @@ import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
+export function getAllPostsNames() {
+  return fs
+    .readdirSync(postsDirectory)
+    .map(postName => path.join(postsDirectory, postName.replace(/\.md$/, "")));
+}
+
 function getAllPostsData() {
   const postNames = fs.readdirSync(postsDirectory);
   const allPostsData = postNames.map(postName => {
