@@ -1,10 +1,14 @@
 ---
 title: "3 Ways To Center A Div"
 date: "2023-04-13"
-excerpt: "Centering a div element in CSS can sometimes be a challenging task, but fear not! There are several methods you can use to achieve this. In this article, we will explore three popular ways to center a div using English terms."
+tags:
+  - centering
+  - layout
 ---
 
-Centering a div element in CSS can sometimes be a challenging task, but fear not! There are several methods you can use to achieve this. In this article, we will explore three popular ways to center a div using English terms.
+Centering a div element in CSS can sometimes be a challenging task, but fear not! There are several methods you can use to achieve this. In this article, we will explore using English terms.
+
+<!-- end -->
 
 ## Method 1: Margin Auto
 

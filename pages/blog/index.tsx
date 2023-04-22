@@ -3,11 +3,14 @@ import PostPreview from "../../src/components/blog/PostPreview";
 import ColorText from "../../src/components/ColorText";
 import SearchToolbar from "../../src/components/SearchToolbar";
 import { getPostsPreview } from "../../lib/posts";
-import path from "path";
+import Image from "next/image";
+import { useState } from "react";
 
 const url = process.env.NEXT_PUBLIC_URL;
 
 export default function Blog({ postsData }: { postsData: postsDataProps }) {
+  const [filteredPosts, setFilteredPosts] = useState(postsData);
+
   return (
     <main className="bg-zinc-800">
       <NextSeo
@@ -25,33 +28,51 @@ export default function Blog({ postsData }: { postsData: postsDataProps }) {
       />
       <div
         id="home"
-        className="h-[70vh] md:h-[50vh] flex flex-col items-center justify-center text-center p-5 bg-background bg-opacity-5 bg-zinc-700"
+        className="relative h-[70vh] md:h-[50vh] flex flex-col items-center justify-center text-center p-5 bg-zinc-950"
       >
         <ColorText
           Variant="span"
-          className="text-base font-semibold tracking-widest uppercase"
+          className="text-base font-semibold tracking-widest uppercase z-10"
         >
           Blog
         </ColorText>
-        <h1 className="text-4xl font-extrabold uppercase text-zinc-50">
+        <h1 className="text-4xl font-extrabold uppercase text-zinc-50 z-10">
           Find the best tips for better designs
         </h1>
+
+        <div className="opacity-50">
+          <Image
+            src="/background.jpg"
+            fill
+            alt="background img"
+            className="object-cover pointer-events-none"
+          />
+        </div>
       </div>
       <div className="flex justify-center py-10 p-5 bg-zinc-900">
         <div className="max-w-4xl flex flex-col items-center gap-20 justify-center">
-          <SearchToolbar />
+          <SearchToolbar
+            postsData={postsData}
+            setFilteredPosts={setFilteredPosts}
+          />
           <div className="flex w-full">
-            <TimeLine />
-            <div className="flex flex-col gap-3">
-              {postsData.map(({ data, id }) => (
-                <PostPreview
-                  title={data.title}
-                  date={data.date}
-                  excerpt={data.excerpt}
-                  slug={id}
-                  key={id}
-                />
-              ))}
+            {filteredPosts.length > 0 && <TimeLine />}
+            <div className="flex flex-col gap-3 w-full">
+              {filteredPosts.length > 0 ? (
+                filteredPosts.map(({ data, id, excerpt }) => (
+                  <PostPreview
+                    title={data.title}
+                    date={data.date}
+                    excerpt={excerpt}
+                    slug={id}
+                    key={id}
+                  />
+                ))
+              ) : (
+                <span className="text-center text-zinc-50 text-lg font-medium">
+                  No results was found :(
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -61,16 +82,17 @@ export default function Blog({ postsData }: { postsData: postsDataProps }) {
 }
 
 function TimeLine() {
-  return <div className="h-full w-2 rounded-lg bg-zinc-700 md:mr-10 mr-3" />;
+  return <div className="h-full w-1 rounded-lg bg-zinc-700 md:mr-10 mr-3" />;
 }
 
-type postsDataProps = {
+export type postsDataProps = {
   id: string;
   data: {
     date: string;
     title: string;
-    excerpt: string;
+    tags: string[];
   };
+  excerpt: string;
 }[];
 
 export async function getStaticProps() {

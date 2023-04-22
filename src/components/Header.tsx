@@ -48,7 +48,7 @@ export default function Header() {
         (usePathname() === "/" || usePathname() === "/blog/"
           ? "absolute top-0 "
           : "relative ") +
-        "w-full flex flex-col justify-center items-center md:justify-start gap-5 p-6 md:flex-row"
+        "w-full flex flex-col justify-center items-center z-20 md:justify-start gap-5 p-6 md:flex-row"
       }
     >
       <Link href="/">

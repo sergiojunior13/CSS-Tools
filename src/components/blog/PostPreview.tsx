@@ -16,7 +16,7 @@ export default function PostPreview({
 }: PostPreviewProps) {
   return (
     <Link href={`blog/${slug}`}>
-      <article className="hover:bg-zinc-800 relative text-zinc-50 rounded-xl p-3 w-full transition-colors before:block before:absolute before:left-[-14px] md:before:left-[-42px] before:rounded-bl-2xl before:top-1/2 before:-translate-y-1/2 before:border-b-2 before:border-l-2 before:border-zinc-700 before:h-3 before:w-5 md:before:h-10 md:before:w-10">
+      <article className="hover:bg-zinc-800 relative text-zinc-50 rounded-xl p-3 w-full transition-colors before:block before:absolute before:left-[-14px] md:before:left-[-43px] before:rounded-bl-2xl before:top-1/2 before:-translate-y-1/2 before:border-b-[3px] before:border-l-[3px] before:border-zinc-700 before:h-3 before:w-5 md:before:h-10 md:before:w-10">
         <time
           dateTime={dayjs(date).toISOString()}
           className="md:text-xs text-sm text-zinc-600"

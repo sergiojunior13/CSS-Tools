@@ -1,9 +1,66 @@
 import * as Toolbar from "@radix-ui/react-toolbar";
 import * as Toggle from "@radix-ui/react-toggle";
 import { MagnifyingGlass, ArrowsDownUp } from "phosphor-react";
-import { useState, ReactNode } from "react";
+import {
+  useState,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+} from "react";
+import { postsDataProps } from "../../pages/blog";
 
-export default function SearchToolbar() {
+interface SearchToolbarProps {
+  setFilteredPosts: Dispatch<SetStateAction<postsDataProps>>;
+  postsData: postsDataProps;
+}
+
+export default function SearchToolbar({
+  setFilteredPosts,
+  postsData,
+}: SearchToolbarProps) {
+  const [orderedBy, setOrderedBy] = useState<"newest" | "oldest">("newest");
+  const [activeTags, setActiveTags] = useState<string[]>([]);
+  const [searchValue, setSearchValue] = useState("");
+
+  const tags = postsData
+    .map(({ data }) => data.tags)
+    .reduce((prevArray, crrArray) => prevArray.concat(crrArray))
+    .filter((tag, index, tagsArray) => tagsArray.indexOf(tag) === index);
+
+  useEffect(() => {
+    let filteredPosts = postsData;
+
+    if (activeTags.length > 0) {
+      filteredPosts = sort(
+        postsData.filter(({ data }) => {
+          return activeTags.every(tag => data.tags.includes(tag));
+        }),
+        orderedBy
+      );
+    } else {
+      filteredPosts = sort(postsData, orderedBy);
+    }
+
+    if (searchValue !== "") {
+      filteredPosts = filteredPosts.filter(({ data, id, excerpt }) => {
+        return (
+          data.title
+            .toLowerCase()
+            .includes(searchValue.toLowerCase().replaceAll(/\s+/g, " ")) ||
+          id
+            .toLowerCase()
+            .includes(searchValue.toLowerCase().replaceAll(/\s+/g, " ")) ||
+          excerpt
+            .toLowerCase()
+            .includes(searchValue.toLowerCase().replaceAll(/\s+/g, " "))
+        );
+      });
+    }
+
+    setFilteredPosts(filteredPosts);
+  }, [activeTags, orderedBy, searchValue]);
+
   return (
     <Toolbar.Root
       id="searchDiv"
@@ -13,19 +70,14 @@ export default function SearchToolbar() {
         type="multiple"
         orientation="horizontal"
         className="flex justify-center md:justify-start gap-3 w-fit flex-wrap"
+        onValueChange={setActiveTags}
       >
-        <TagFilter>CSS</TagFilter>
-        <TagFilter>HTML</TagFilter>
-        <TagFilter>JavaScript</TagFilter>
-        <TagFilter>div</TagFilter>
-        <TagFilter>div</TagFilter>
-        <TagFilter>div</TagFilter>
-        <TagFilter>div</TagFilter>
-        <TagFilter>div</TagFilter>
-        <TagFilter>div</TagFilter>
+        {tags.map(tag => (
+          <TagFilter key={tag}>{tag}</TagFilter>
+        ))}
       </Toolbar.ToggleGroup>
 
-      <ToggleFilter />
+      <ToggleFilter setOrderedBy={setOrderedBy} />
 
       <div
         id="search"
@@ -38,14 +90,22 @@ export default function SearchToolbar() {
           type="text"
           placeholder="Search an article..."
           className="bg-transparent w-full outline-none text-zinc-50 rounded-r-full"
+          value={searchValue}
+          onChange={e => setSearchValue(e.target.value)}
         />
       </div>
     </Toolbar.Root>
   );
 }
 
-function ToggleFilter() {
+interface ToogleFilterProps {
+  setOrderedBy: Dispatch<SetStateAction<"newest" | "oldest">>;
+}
+
+function ToggleFilter({ setOrderedBy }: ToogleFilterProps) {
   const [isPressed, setIsPressed] = useState(false);
+
+  setOrderedBy(isPressed ? "oldest" : "newest");
 
   return (
     <Toggle.Root
@@ -56,7 +116,7 @@ function ToggleFilter() {
         size={20}
         className="group-data-[state=on]:rotate-180 transition-transform"
       />
-      <span>{isPressed ? "Popular" : "Newest"}</span>
+      <span>{isPressed ? "Oldest" : "Newest"}</span>
     </Toggle.Root>
   );
 }
@@ -77,7 +137,16 @@ function TagFilter({ children }: TagFilterProps) {
         "data-[state=on]:bg-orange-600 data-[state=on]:border-orange-600 data-[state=on]:hover:bg-orange-700 data-[state=on]:hover:border-orange-700 bg-zinc-800 p-1 flex items-center justify-center rounded-xl border-2 border-zinc-800 hover:border-zinc-500 transition-colors text-zinc-300 h-12 flex-1 md:flex-none md:h-4/5 px-4"
       }
     >
-      <span>{children}</span>
+      <span className="first-letter:uppercase">{children}</span>
     </Toolbar.ToggleItem>
   );
+}
+
+function sort(arr: postsDataProps, type: "newest" | "oldest") {
+  switch (type) {
+    case "newest":
+      return arr.slice().sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+    case "oldest":
+      return arr.slice().sort((a, b) => (a.data.date > b.data.date ? 1 : -1));
+  }
 }

@@ -2,27 +2,39 @@ import { links } from "../src/components/Header";
 import ColorText from "../src/components/ColorText";
 import Link from "next/link";
 import { CaretDown } from "phosphor-react";
+import Image from "next/image";
 
 function App() {
   return (
     <main className="bg-zinc-800">
       <div
         id="home"
-        className="h-[100vh] flex flex-col items-center justify-center p-5 bg-background bg-opacity-5 bg-zinc-700"
+        className="relative h-[100vh] flex flex-col items-center justify-center p-5 bg-zinc-950"
       >
-        <h1 className="font-bold text-[2.35rem] text-center leading-tight text-zinc-50 mt-auto">
+        <h1 className="font-bold text-[2.35rem] text-center leading-tight text-zinc-50 mt-auto z-10">
           Elevate your website design with powerful{" "}
           <ColorText
             Variant="span"
-            className="bg-clip-text bg-orange-fade text-transparent"
+            className="bg-clip-text bg-orange-fade text-transparent z-10"
           >
             CSS tools
           </ColorText>
           .
         </h1>
-        <a className="mt-auto animate-bounce text-orange-600" href="#tools">
+        <a
+          className="mt-auto animate-bounce text-orange-600 z-10"
+          href="#tools"
+        >
           <CaretDown size={32} />
         </a>
+        <div className="opacity-30">
+          <Image
+            src="/background.jpg"
+            fill
+            alt="background img"
+            className="object-cover pointer-events-none"
+          />
+        </div>
       </div>
       <div id="tools" className="p-10 flex flex-col items-center">
         <ColorText

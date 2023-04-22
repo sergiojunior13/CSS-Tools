@@ -1,12 +1,15 @@
 ---
 date: "2023-04-14"
-title: "Test 1243564574745 odjfvofnv fnvi dfiob ogvnb fgvnb"
-excerpt: "CSS (Cascading Style Sheets) is a styling language used for web development to define the layout, appearance, and design of web pages. It works in conjunction with HTML (Hypertext Markup Language) to create visually appealing and user-friendly websites."
+title: "Introduction to CSS"
+tags:
+  - typography
+  - colors
+  - layout
 ---
 
-# Introduction to CSS
-
 CSS (Cascading Style Sheets) is a styling language used for web development to define the layout, appearance, and design of web pages. It works in conjunction with HTML (Hypertext Markup Language) to create visually appealing and user-friendly websites.
+
+<!-- end -->
 
 ## Benefits of CSS
 

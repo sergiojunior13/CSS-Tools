@@ -1,5 +1,4 @@
-import Draggable, { DraggableData } from "react-draggable";
-import ColorText from "./ColorText";
+import Draggable from "react-draggable";
 import InputText from "./InputText";
 
 interface AxisBoxProps {
