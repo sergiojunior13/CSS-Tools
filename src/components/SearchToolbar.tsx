@@ -45,15 +45,9 @@ export default function SearchToolbar({
     if (searchValue !== "") {
       filteredPosts = filteredPosts.filter(({ data, id, excerpt }) => {
         return (
-          data.title
-            .toLowerCase()
-            .includes(searchValue.toLowerCase().replaceAll(/\s+/g, " ")) ||
-          id
-            .toLowerCase()
-            .includes(searchValue.toLowerCase().replaceAll(/\s+/g, " ")) ||
-          excerpt
-            .toLowerCase()
-            .includes(searchValue.toLowerCase().replaceAll(/\s+/g, " "))
+          compareSearchValues(data.title, searchValue) ||
+          compareSearchValues(id, searchValue) ||
+          compareSearchValues(excerpt, searchValue)
         );
       });
     }
@@ -149,4 +143,15 @@ function sort(arr: postsDataProps, type: "newest" | "oldest") {
     case "oldest":
       return arr.slice().sort((a, b) => (a.data.date > b.data.date ? 1 : -1));
   }
+}
+
+function format(value: string) {
+  return value.toLowerCase().replaceAll(/\s+/g, " ").replaceAll(/\s+$/g, "");
+}
+
+function compareSearchValues(value1: string, value2: string) {
+  value1 = format(value1);
+  value2 = format(value2);
+
+  return value1.includes(value2);
 }
