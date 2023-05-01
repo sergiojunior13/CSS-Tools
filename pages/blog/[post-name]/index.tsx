@@ -20,11 +20,13 @@ const rootUrl = process.env.NEXT_PUBLIC_URL;
 
 export default function Post({ content, data }: postDataProps) {
   useEffect(() => {
-    const toMobile = () => setIsMobile(window.screen.width < 768);
+    const toMobile = () => setIsMobile(window.innerWidth < 768);
 
     toMobile();
 
-    window.onresize = toMobile;
+    window.addEventListener("resize", toMobile);
+
+    return () => window.removeEventListener("resize", toMobile);
   }, []);
 
   const { title, date } = data;
