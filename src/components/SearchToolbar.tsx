@@ -33,9 +33,13 @@ export default function SearchToolbar({
 
     if (activeTags.length > 0) {
       filteredPosts = sort(
-        postsData.filter(({ data }) => {
-          return activeTags.every(tag => data.tags.includes(tag));
-        }),
+        postsData.filter(({ data }) =>
+          activeTags.every(tag =>
+            data.tags
+              .map(tag => tag.toString().toLowerCase().replaceAll(" ", "-"))
+              .includes(tag)
+          )
+        ),
         orderedBy
       );
     } else {

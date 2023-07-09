@@ -1,6 +1,6 @@
 ---
 title: "3 Ways To Center A Div"
-date: "2023-04-13"
+date: "2023-06-01"
 tags:
   - centering
   - layout

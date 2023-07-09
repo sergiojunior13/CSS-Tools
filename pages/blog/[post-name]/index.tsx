@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import matter from "gray-matter";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Code, CopyBlock, dracula } from "react-code-blocks";
+import Link from "next/link";
 
 interface postDataProps extends matter.GrayMatterFile<string> {
   data: {
@@ -78,6 +79,14 @@ export default function Post({ content, data }: postDataProps) {
         </PostHeading>
         <ReactMarkdown
           components={{
+            a({ children, href, ...props }) {
+              if (!href) return <a {...props}>{children}</a>;
+              return (
+                <Link href={href} className="text-orange-500 underline">
+                  {children}
+                </Link>
+              );
+            },
             h2({ children }) {
               return <PostHeading heading="h2" children={children} />;
             },
