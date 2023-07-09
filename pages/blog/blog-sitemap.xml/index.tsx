@@ -2,8 +2,6 @@ import { GetServerSidePropsContext } from "next";
 import { getServerSideSitemapLegacy } from "next-sitemap";
 import { getAllPostsData } from "../../../lib/posts";
 
-export default function GenerateSitemap() {}
-
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const postsData = getAllPostsData();
   const postsURLAndDate = postsData.map(postData => {
@@ -12,7 +10,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 
   fetch(
     "https://www.google.com/ping?sitemap=https://tools-css.vercel.app/blog/blog-sitemap.xml"
-  );
+  ).catch(error => console.log(error));
 
   return getServerSideSitemapLegacy(
     ctx,
