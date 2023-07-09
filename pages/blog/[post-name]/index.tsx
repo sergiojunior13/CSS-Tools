@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import matter from "gray-matter";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Code, CopyBlock, dracula } from "react-code-blocks";
+import Link from "next/link";
 
 interface postDataProps extends matter.GrayMatterFile<string> {
   data: {
@@ -60,7 +61,7 @@ export default function Post({ content, data }: postDataProps) {
         </aside>
       )}
       <article
-        className="text-zinc-300 text-lg md:w-3/5 max-w-3xl"
+        className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap"
         ref={articleRef}
       >
         {/* <div className="ad w-full h-48 mb-5"></div> */}
@@ -78,6 +79,14 @@ export default function Post({ content, data }: postDataProps) {
         </PostHeading>
         <ReactMarkdown
           components={{
+            a({ children, href, ...props }) {
+              if (!href) return <a {...props}>{children}</a>;
+              return (
+                <Link href={href} className="text-orange-500 underline">
+                  {children}
+                </Link>
+              );
+            },
             h2({ children }) {
               return <PostHeading heading="h2" children={children} />;
             },
@@ -111,11 +120,13 @@ export default function Post({ content, data }: postDataProps) {
         <footer>{/* <div className="ad w-full h-48 mt-5"></div> */}</footer>
       </article>
       {!isMobile && (
-        <nav className="flex flex-col gap-4 w-1/5 p-5 sticky top-14 self-start">
-          <label className="text-xl font-semibold">Quick Nav</label>
-          <TableOfContents articleRef={articleRef} />
-          {/* <div className="ad w-full h-[30vh]"></div> */}
-        </nav>
+        <aside className="flex flex-col gap-4 w-1/5 p-5 sticky top-14 self-start">
+          <nav className="flex flex-col gap-4">
+            <label className="text-xl font-semibold">Quick Nav</label>
+            <TableOfContents articleRef={articleRef} />
+            {/* <div className="ad w-full h-[30vh]"></div> */}
+          </nav>
+        </aside>
       )}
     </main>
   );
