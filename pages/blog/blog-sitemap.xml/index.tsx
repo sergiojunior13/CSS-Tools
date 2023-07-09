@@ -2,6 +2,9 @@ import { GetServerSidePropsContext } from "next";
 import { getServerSideSitemapLegacy } from "next-sitemap";
 import { getAllPostsData } from "../../../lib/posts";
 
+// Don't remove it
+export default function GenerateSitemap() {}
+
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const postsData = getAllPostsData();
   const postsURLAndDate = postsData.map(postData => {
