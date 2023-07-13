@@ -16,15 +16,22 @@ export default function Footer() {
           />
         </Link>
         <div className="text-start">
-          <nav className="flex flex-col gap-[1px] text-orange-500 text-sm">
-            <label className="text-zinc-600 mt-2 text-xs">Tools</label>
-            {links.map(({ name, to }) => (
-              <Link key={to} href={to}>
-                {name.toLowerCase().charAt(0).toUpperCase() + name.slice(1)}
-              </Link>
-            ))}
-            <label className="text-zinc-600 mt-2 text-xs">Blog</label>
-            <Link href="/blog">Blog</Link>
+          <nav className="grid grid-cols-2 gap-6 text-orange-500 text-sm [&_div]:flex [&_div]:flex-col">
+            <div>
+              <label className="text-zinc-600 mt-2 text-xs">Tools</label>
+              {links.map(({ name, to }) => (
+                <Link key={to} href={to}>
+                  {name.toLowerCase().charAt(0).toUpperCase() + name.slice(1)}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <label className="text-zinc-600 mt-2 text-xs">Blog</label>
+              <Link href="/blog">Blog</Link>
+              <label className="text-zinc-600 mt-2 text-xs">Policies</label>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
+            </div>
           </nav>
         </div>
       </div>
