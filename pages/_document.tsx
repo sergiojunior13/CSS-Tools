@@ -27,10 +27,10 @@ export default function Document() {
           }}
         />
         <script
-          data-ad-client="ca-pub-2683859460671203"
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        />
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2683859460671203"
+          crossOrigin="anonymous"
+        ></script>
         <meta
           name="google-site-verification"
           content="AqCTozOdxdev-fEuiuWVG5DrgFKrUb3b_BIH5nbyYE8"

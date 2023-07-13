@@ -11,10 +11,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     return { postURL: postData.postURL, date: postData.data.date };
   });
 
-  fetch(
-    "https://www.google.com/ping?sitemap=https://tools-css.vercel.app/blog/blog-sitemap.xml"
-  ).catch(error => console.log(error));
-
   return getServerSideSitemapLegacy(
     ctx,
     postsURLAndDate.map(({ date, postURL }) => {
