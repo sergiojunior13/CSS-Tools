@@ -15,7 +15,10 @@ module.exports = {
         neomorphism: "13px 13px 26px #1c1c1f, -13px -13px 26px #323235",
         fade: "inset 0 20px 10px -10px #18181b, inset 0 -20px 10px -10px #18181b",
       },
-      fontFamily: { sans: ["Inter", "sans-serif"] },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        mono: ["var(--font-roboto-mono)"],
+      },
     },
   },
   plugins: [],

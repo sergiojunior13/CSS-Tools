@@ -29,8 +29,12 @@ export default function Footer() {
               <label className="text-zinc-600 mt-2 text-xs">Blog</label>
               <Link href="/blog">Blog</Link>
               <label className="text-zinc-600 mt-2 text-xs">Policies</label>
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms of Service</Link>
+              <Link href="/privacy" prefetch={false}>
+                Privacy Policy
+              </Link>
+              <Link href="/terms" prefetch={false}>
+                Terms of Service
+              </Link>
             </div>
           </nav>
         </div>

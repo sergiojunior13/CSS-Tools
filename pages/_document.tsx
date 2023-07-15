@@ -1,21 +1,16 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
     <Html lang="en-us" className="bg-zinc-800">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="shortcut icon" href="/favicon.png" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <script
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-G0MQ749VYG"
         />
-        <script
+        <Script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -26,23 +21,14 @@ export default function Document() {
       gtag("config", "G-G0MQ749VYG");`,
           }}
         />
-        <script
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2683859460671203"
           crossOrigin="anonymous"
-        ></script>
+        />
         <meta
           name="google-site-verification"
           content="AqCTozOdxdev-fEuiuWVG5DrgFKrUb3b_BIH5nbyYE8"
-        />
-        <meta
-          name="description"
-          content="Online CSS Tools to help you make your website"
-        />
-        <meta name="keywords" content="css tools, css, web tools" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
         />
       </Head>
       <body>
