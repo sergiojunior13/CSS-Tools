@@ -3,6 +3,7 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import { NextSeo } from "next-seo";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 const title = "CSS Tools | FREE & Online CSS-3 Generator";
 const description =
@@ -16,11 +17,30 @@ const inter = Inter({
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <div className={`${inter.variable} font-sans`}>
+    <div className={`${inter.className}`}>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-G0MQ749VYG"
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-G0MQ749VYG");`,
+        }}
+      />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2683859460671203"
+        crossOrigin="anonymous"
+      />
       <NextSeo
         title={title}
         description={description}
-        canonical={url}
         openGraph={{
           url,
           title,
@@ -45,6 +65,7 @@ export default function MyApp({ Component, pageProps }) {
           siteName: title,
         }}
       />
+
       <Header />
       <Component {...pageProps} />
       <Footer />
