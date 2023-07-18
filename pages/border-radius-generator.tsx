@@ -50,7 +50,7 @@ export default function BorderRadius() {
         title="Border Radius Generator | CSS Tools"
         description="Quickly generate CSS BORDER-RADIUS with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
-      <ColorText className="mb-3" Variant="h2">
+      <ColorText className="mb-3" Variant="h1">
         Border Radius Generator
       </ColorText>
       <p>

@@ -132,7 +132,7 @@ function TagFilter({ children }: TagFilterProps) {
     <Toolbar.ToggleItem
       value={value}
       className={
-        "data-[state=on]:bg-orange-600 data-[state=on]:border-orange-600 data-[state=on]:hover:bg-orange-700 data-[state=on]:hover:border-orange-700 bg-zinc-800 p-1 flex items-center justify-center rounded-xl border-2 border-zinc-800 hover:border-zinc-500 transition-colors text-zinc-300 h-12 flex-1 md:flex-none md:h-4/5 px-4"
+        "data-[state=on]:bg-orange-600 data-[state=on]:border-orange-600 data-[state=on]:hover:bg-orange-700 data-[state=on]:hover:border-orange-700 bg-zinc-800 p-3 flex items-center justify-center rounded-xl border-2 border-zinc-800 hover:border-zinc-500 transition-colors text-zinc-300 h-12 flex-1 md:flex-none md:h-4/5 px-4 leading-none"
       }
     >
       <span className="first-letter:uppercase">{children}</span>

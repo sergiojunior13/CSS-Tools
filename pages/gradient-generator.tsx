@@ -79,7 +79,7 @@ export default function Gradient() {
         title="Gradient Generator | CSS Tools"
         description="Quickly generate CSS GRADIENTS with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
-      <ColorText className="mb-5" Variant="h2">
+      <ColorText className="mb-5" Variant="h1">
         Gradient Generator
       </ColorText>
       <div className="w-full max-w-screen-sm">

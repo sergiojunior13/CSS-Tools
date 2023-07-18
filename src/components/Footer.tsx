@@ -5,7 +5,7 @@ import { links } from "./Header";
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 flex flex-col text-white/80 p-4 gap-8 text-center text-xs">
-      <div className="grid grid-cols-2 place-items-center">
+      <div className="grid grid-rows-2 md:grid-cols-2 md:grid-rows-none place-items-center max-w-5xl mx-auto">
         <Link href="/">
           <Image
             alt="site-logo"

@@ -48,7 +48,7 @@ export default function Filter() {
         title="Filter Generator | CSS Tools"
         description="Quickly generate CSS FILTERS with this generator. IMPROVE your website design with this FREE and EASY tool."
       />
-      <ColorText className="mb-3" Variant="h2">
+      <ColorText className="mb-3" Variant="h1">
         Filter Generator
       </ColorText>
       <div className="flex flex-wrap-reverse gap-5 justify-center">

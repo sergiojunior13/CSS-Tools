@@ -13,8 +13,8 @@ export default function ColorText({
   return (
     <Variant
       className={`bg-clip-text bg-orange-fade text-transparent ${className} ${
-        Variant === "h1" && "font-bold text-5xl text-center"
-      } ${Variant === "h2" && "font-semibold text-4xl text-center"}`}
+        Variant === "h1" && "font-bold text-4xl text-center"
+      } ${Variant === "h2" && "font-semibold text-3xl text-center"}`}
       {...props}
     >
       {props.children}

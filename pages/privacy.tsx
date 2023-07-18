@@ -6,7 +6,7 @@ export default function Privacy() {
     <main className="flex flex-col my-5 text-white p-4 max-w-3xl mx-auto indent-10">
       <NextSeo
         title="Privacy Policy | CSS Tools"
-        description="CSS Tools Privacy Policy"
+        description=" The CSS Tools Privacy Policy"
       />
       <ColorText className="mb-5 !text-3xl" Variant="h1">
         Privacy Policy
