@@ -9,6 +9,26 @@ export default function Document() {
           name="google-site-verification"
           content="AqCTozOdxdev-fEuiuWVG5DrgFKrUb3b_BIH5nbyYE8"
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-G0MQ749VYG"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-G0MQ749VYG");`,
+          }}
+        />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2683859460671203"
+          crossOrigin="anonymous"
+        />
       </Head>
       <body>
         <Main />
