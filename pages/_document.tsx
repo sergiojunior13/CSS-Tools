@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en-us" className="bg-zinc-800">
       <Head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.png" />
         <meta
           name="google-site-verification"
