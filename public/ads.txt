@@ -1,4 +1,4 @@
-OWNERDOMAIN=tools-css.vercel.app
+OWNERDOMAIN=
 MANAGERDOMAIN=themoneytizer.com
 themoneytizer.com,107007,DIRECT
 smartadserver.com,1097,DIRECT
