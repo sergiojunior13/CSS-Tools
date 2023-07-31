@@ -25,10 +25,10 @@ export default function Document() {
       gtag("config", "G-G0MQ749VYG");`,
           }}
         />
-        {`<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->`}
+        {/* Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) */}
         <script
           type="text/javascript"
-          async={true}
+          async
           dangerouslySetInnerHTML={{
             __html: `(function() {
   var host = 'www.themoneytizer.com';
@@ -189,8 +189,8 @@ export default function Document() {
   }
 })();`,
           }}
-        ></script>
-        {`<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->`}
+        />
+        {/* End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) */}
       </Head>
       <body>
         <Main />
