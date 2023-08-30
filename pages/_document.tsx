@@ -4,8 +4,8 @@ export default function Document() {
   return (
     <Html lang="en-us" className="bg-zinc-800">
       <Head>
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta
           name="google-site-verification"
           content="AqCTozOdxdev-fEuiuWVG5DrgFKrUb3b_BIH5nbyYE8"
