@@ -20,7 +20,7 @@ export default function AxisBox({
   convertAxis = defaultConvertAxis,
 }: AxisBoxProps) {
   return (
-    <div className="bg-zinc-900 shadow-neomorphism z-[1] rounded-lg p-2 w-4/5 sm:w-auto">
+    <div className="bg-zinc-900 shadow-neomorphism z-[1] rounded-lg p-2 w-full sm:w-auto">
       <div className="relative w-[212px] m-auto aspect-square bg-zinc-900 rounded-md outline-zinc-700 outline-2 outline">
         <Draggable
           bounds="parent"
@@ -51,8 +51,8 @@ export default function AxisBox({
         <div className="flex justify-between bg-zinc-800 rounded-md px-1">
           <span className="text-zinc-400">Y</span>{" "}
           <InputText
-            max={50}
-            min={-50}
+            max={max}
+            min={min}
             type="number"
             value={axis.y}
             handleValue={y =>

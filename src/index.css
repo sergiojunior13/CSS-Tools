@@ -2,21 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-        @apply appearance-none;
-    }
-}
-
 html {
     scroll-behavior: smooth;
     scrollbar-color: #0d0d0d #3b3b3b;
     scroll-padding-top: 8px;
 }
 
-/* Chrome, Edge, and Safari */
 ::-webkit-scrollbar {
     width: 16px;
 }
@@ -28,6 +19,12 @@ html {
 ::-webkit-scrollbar-thumb {
     background-color: #0d0d0d;
     border-radius: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button, input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 
 .react-colorful__alpha .react-colorful__alpha-pointer, .react-colorful__hue .react-colorful__hue-pointer {

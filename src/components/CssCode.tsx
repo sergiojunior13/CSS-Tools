@@ -8,7 +8,7 @@ interface CssCodeProps {
 }
 export default function CssCode({
   cssCode,
-  className,
+  className = "",
   truncate = true,
 }: CssCodeProps) {
   const [isCopying, setIsCopying] = useState(false);
@@ -24,7 +24,9 @@ export default function CssCode({
       className={`flex justify-between items-center bg-zinc-900 shadow-neomorphism p-2 rounded-t-lg ${className}`}
     >
       <span
-        className={`${truncate && "truncate"} font-mono mr-2 text-sm w-11/12`}
+        className={`${
+          truncate && "truncate"
+        } text-ellipsis font-mono mr-2 text-sm w-11/12 max-w-[250px] sm:max-w-none`}
       >
         {cssCode}
       </span>

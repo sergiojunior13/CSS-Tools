@@ -79,7 +79,7 @@ export default function Post({ content, data }: postDataProps) {
         </PostHeading>
         <ReactMarkdown
           components={{
-            a({ children, href, ...props }) {
+            a({ children: children, href, ...props }) {
               if (!href) return <a {...props}>{children}</a>;
               return (
                 <Link href={href} className="text-orange-500 underline">
@@ -87,13 +87,13 @@ export default function Post({ content, data }: postDataProps) {
                 </Link>
               );
             },
-            h2({ children }) {
+            h2({ children: children }) {
               return <PostHeading heading="h2" children={children} />;
             },
-            h3({ children }) {
+            h3({ children: children }) {
               return <PostHeading heading="h3" children={children} />;
             },
-            code({ children, inline, className, ...props }) {
+            code({ children: children, inline, className, ...props }) {
               const language = /language-(\w+)/.exec(className || "");
 
               return inline ? (

@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { useState } from "react";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import InputRangeBox from "../src/components/Inputs/InputRange";
+import InputRangeBox from "../src/components/inputs/InputRange";
 import ExampleImage from "../public/example-image.jpg";
 import Image from "next/image";
 
@@ -59,8 +59,7 @@ export default function Filter() {
             min={0}
             max={100}
             step={1}
-            handleChange={e => setBlur(+e.target.value)}
-            handleChangeValue={setBlur}
+            handleChange={setBlur}
           />
           <InputRangeBox
             name="brightness"
@@ -68,8 +67,7 @@ export default function Filter() {
             min={0}
             max={5}
             step={0.1}
-            handleChange={e => setBrightness(+e.target.value)}
-            handleChangeValue={setBrightness}
+            handleChange={setBrightness}
           />
           <InputRangeBox
             name="contrast"
@@ -77,8 +75,7 @@ export default function Filter() {
             min={0}
             max={10}
             step={0.1}
-            handleChange={e => setContrast(+e.target.value)}
-            handleChangeValue={setContrast}
+            handleChange={setContrast}
           />
           <InputRangeBox
             name="grayscale"
@@ -86,16 +83,14 @@ export default function Filter() {
             min={0}
             max={1}
             step={0.1}
-            handleChange={e => setGrayscale(+e.target.value)}
-            handleChangeValue={setGrayscale}
+            handleChange={setGrayscale}
           />
           <InputRangeBox
             name="hue-rotate"
             valuetext={{ value: hueRotate, text: "deg" }}
             min={0}
             max={360}
-            handleChange={e => setHueRotate(+e.target.value)}
-            handleChangeValue={setHueRotate}
+            handleChange={setHueRotate}
           />
           <InputRangeBox
             name="invert"
@@ -103,8 +98,7 @@ export default function Filter() {
             min={0}
             max={1}
             step={0.1}
-            handleChange={e => setInvert(+e.target.value)}
-            handleChangeValue={setInvert}
+            handleChange={setInvert}
           />
           <InputRangeBox
             name="opacity"
@@ -112,8 +106,7 @@ export default function Filter() {
             min={0}
             max={1}
             step={0.1}
-            handleChange={e => setOpacity(+e.target.value)}
-            handleChangeValue={setOpacity}
+            handleChange={setOpacity}
           />
           <InputRangeBox
             name="saturate"
@@ -121,8 +114,7 @@ export default function Filter() {
             min={0}
             max={5}
             step={0.1}
-            handleChange={e => setSaturate(+e.target.value)}
-            handleChangeValue={setSaturate}
+            handleChange={setSaturate}
           />
           <InputRangeBox
             name="sepia"
@@ -130,8 +122,7 @@ export default function Filter() {
             min={0}
             max={1}
             step={0.1}
-            handleChange={e => setSepia(+e.target.value)}
-            handleChangeValue={setSepia}
+            handleChange={setSepia}
           />
           {/*Dropsahdw*/}
         </div>

@@ -2,21 +2,27 @@ import "../src/index.css";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import { NextSeo } from "next-seo";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Mono } from "next/font/google";
+import { AppProps } from "next/app";
 
 const title = "CSS Tools | FREE & Online CSS-3 Generator";
 const description =
   "Do you need to create beautiful designs? use this website with free CSS tools to generate incredible styles!";
 const url = process.env.NEXT_PUBLIC_URL;
 
-const inter = Inter({
+export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-export default function MyApp({ Component, pageProps }) {
+export const roboto_mono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+});
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${inter.className}`}>
+    <>
       <NextSeo
         title={title}
         description={description}
@@ -48,6 +54,6 @@ export default function MyApp({ Component, pageProps }) {
       <Header />
       <Component {...pageProps} />
       <Footer />
-    </div>
+    </>
   );
 }

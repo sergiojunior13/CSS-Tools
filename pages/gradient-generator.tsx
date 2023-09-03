@@ -1,8 +1,8 @@
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
 import AxisBox from "../src/components/AxisBox";
-import InputRangeBox from "../src/components/Inputs/InputRange";
-import InputRadioBox from "../src/components/Inputs/InputRadio";
+import InputRangeBox from "../src/components/inputs/InputRange";
+import InputRadioBox from "../src/components/inputs/InputRadio";
 
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
 import ColorPicker from "../src/components/ColorPicker";
@@ -39,10 +39,6 @@ export default function Gradient() {
 
   function handleShapeChange(value: string) {
     setShape(value);
-  }
-
-  function handleAngleChange(e: ChangeEvent<HTMLInputElement>) {
-    setAngle(+e.target.value);
   }
 
   function handleAxis({ x, y }: { x: number; y: number }) {
@@ -114,8 +110,7 @@ export default function Gradient() {
                 valuetext={{ value: angle, text: "°" }}
                 max="360"
                 min="0"
-                handleChange={handleAngleChange}
-                handleChangeValue={setAngle}
+                handleChange={setAngle}
               />
             )}
             {type == "radial" && (
@@ -154,7 +149,7 @@ function convertAxis(axis: number) {
 }
 
 export function Label({
-  children,
+  children: children,
   className,
 }: HTMLAttributes<HTMLHeadingElement>) {
   return <label className={"text-gray-400 " + className}>{children}</label>;

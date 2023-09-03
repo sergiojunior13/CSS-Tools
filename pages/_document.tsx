@@ -1,8 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { inter, roboto_mono } from "./_app";
 
 export default function Document() {
   return (
-    <Html lang="en-us" className="bg-zinc-800">
+    <Html
+      lang="en-us"
+      className={`bg-zinc-800 ${inter.variable} ${roboto_mono.variable}`}
+    >
       <Head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />

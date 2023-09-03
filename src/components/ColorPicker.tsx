@@ -8,7 +8,11 @@ interface ColorPickerProps {
 export default function ColorPicker({ color, handleColor }: ColorPickerProps) {
   return (
     <>
-      <HexAlphaColorPicker color={color} onChange={handleColor} />
+      <HexAlphaColorPicker
+        className="scale-90 lg:scale-100"
+        color={color}
+        onChange={handleColor}
+      />
       <input
         type="text"
         value={color}

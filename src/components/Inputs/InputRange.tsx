@@ -11,11 +11,19 @@ interface InputRangeBoxProps {
   min?: string | number;
   max?: string | number;
   step?: string | number;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleChangeValue?: (value: any) => void;
+  handleChange: (value: number) => void;
 }
 
 export default function InputRangeBox(props: InputRangeBoxProps) {
+  function handleValue(event: ChangeEvent<HTMLInputElement> | number) {
+    if (typeof event === "number") {
+      props.handleChange(event);
+      return;
+    }
+
+    props.handleChange(+event.target.value);
+  }
+
   return (
     <div className="flex flex-col bg-zinc-900 p-2 whitespace-nowrap rounded h-min shadow-neomorphism">
       <div className="flex justify-between">
@@ -23,11 +31,8 @@ export default function InputRangeBox(props: InputRangeBoxProps) {
         <InputText
           type={"number"}
           value={props.valuetext.value}
-          handleValue={value => {
-            if (!props.handleChangeValue) return;
-            props.handleChangeValue(Number(value));
-          }}
-          className="text-right text-orange-500 w-2/4"
+          handleValue={handleValue}
+          className="outline-none text-right text-orange-500 w-2/4"
           text={props.valuetext.text}
           max={Number(props.max)}
           min={Number(props.min)}
@@ -38,7 +43,7 @@ export default function InputRangeBox(props: InputRangeBoxProps) {
         min={props.min}
         max={props.max}
         value={props.valuetext.value}
-        onChange={props.handleChange}
+        onChange={handleValue}
         step={props.step || "5"}
       />
     </div>

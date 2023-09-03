@@ -18,10 +18,13 @@ export default function InputText({
   text,
   ...rest
 }: InputTextProps) {
+  const isInputTypeNumber = typeof value === "number";
+  const inputTypeIfIsNumber = isInputTypeNumber ? "number" : undefined;
+
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     if (!handleValue) return;
 
-    let inputValue: any = e.target.value;
+    let inputValue = Number(e.target.value);
 
     if (max !== undefined && inputValue > max) {
       inputValue = max;
@@ -37,6 +40,7 @@ export default function InputText({
       <input
         value={value}
         onChange={handleChange}
+        type={inputTypeIfIsNumber}
         className={`outline-0 bg-transparent ${className}`}
         {...rest}
       />
