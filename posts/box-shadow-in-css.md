@@ -1,6 +1,6 @@
 ---
 title: "Box Shadow in CSS: All You Need to Know About"
-date: "2023-06-07"
+date: "2023-09-09"
 tags:
   - box shadow
   - styling
@@ -39,8 +39,18 @@ If you want to create an inner shadow effect, you can use the `inset` keyword be
 box-shadow: inset 5px 5px 10px 8px #fff;
 ```
 
+## Adding Multiples Shadows
+
+The `box-shadow` property also supports adding multiple shadows. To add a new shadow, just separate the shadow code by a comma. There's no limit to how many shadows you can put on. See the example below:
+
+```css
+box-shadow: 12px -12px 20px 0 #ff0000, -12px 12px 20px 0 #00c8ff;
+```
+
+With multiple shadows, you can create a variety of types of shadows, like rainbow shadows, gradient shadows, and many others.
+
 ## Generating a Box Shadow
 
 To simplify the process of generating box-shadow code, there are several online tools available. Our website also provides a box shadow generator that you can use. Simply visit our [box shadow generator](/box-shadow-generator/) to access it.
 
-With the generator, you can interactively adjust the values and see the resulting box shadow in real-time. It allows you to experiment with different shadow effects and quickly generate the corresponding CSS code.
+With the generator, you can interactively adjust the values and see the resulting box shadow in real-time. It also supports adding multiple shadows. It allows you to experiment with different shadow effects and quickly generate the corresponding CSS code.

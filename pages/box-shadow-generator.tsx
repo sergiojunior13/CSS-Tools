@@ -9,6 +9,8 @@ import InputRangeBox from "../src/components/inputs/InputRange";
 import ShadowsList, { ShadowsListContext } from "../src/components/ShadowsList";
 
 import { useBoxShadow } from "../hooks/useBoxShadow";
+import Code from "../src/components/Code";
+import Link from "next/link";
 
 export default function BoxShadow() {
   const {
@@ -35,7 +37,7 @@ export default function BoxShadow() {
   } = state;
 
   return (
-    <main className="flex flex-col p-4 items-center justify-center my-5 text-white">
+    <main className="flex flex-col gap-5 p-4 items-center justify-center my-5 text-white">
       <NextSeo
         title="Box Shadow Generator | CSS Tools"
         description="Quickly generate CSS BOX-SHADOW with this generator. IMPROVE your website design with this FREE and EASY tool."
@@ -96,6 +98,18 @@ export default function BoxShadow() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <p>
+          To see how the box-shadow property works, just{" "}
+          <Link
+            href="/blog/box-shadow-in-css/"
+            className="text-orange-500 font-bold"
+          >
+            click here
+          </Link>
+          .
+        </p>
       </div>
     </main>
   );
