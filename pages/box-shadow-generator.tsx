@@ -9,7 +9,7 @@ import InputRangeBox from "../src/components/inputs/InputRange";
 import ShadowsList, { ShadowsListContext } from "../src/components/ShadowsList";
 
 import { useBoxShadow } from "../hooks/useBoxShadow";
-import Code from "../src/components/Code";
+
 import Link from "next/link";
 
 export default function BoxShadow() {
