@@ -1,10 +1,14 @@
 import { NextSeo } from "next-seo";
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
-import { isMobile } from "react-device-detect";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
+import Banner350x50 from "../src/components/ads/Banner350x50";
+import useIsMobile from "../hooks/useIsMobile";
+import Banner300x250 from "../src/components/ads/Banner300x250";
 
 export default function BorderRadius() {
+  const { isMobile } = useIsMobile(1280);
+
   const [radius, setRadius] = useState({
     topLeft: 0,
     topRight: 0,
@@ -45,14 +49,20 @@ export default function BorderRadius() {
   }
 
   return (
-    <main className="flex flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-xl m-auto">
+    <main className="flex maw flex-col gap-5 p-4 items-center justify-center text-center my-5 text-white max-w-xl m-auto">
       <NextSeo
         title="Border Radius Generator | CSS Tools"
         description="Quickly generate CSS BORDER-RADIUS with this generator. IMPROVE your website design with this FREE and EASY tool."
-      />
+      />{" "}
+      <Banner350x50 />
       <ColorText className="mb-3" Variant="h1">
         Border Radius Generator
       </ColorText>
+      {!isMobile && (
+        <div className="absolute h-screen flex items-center top-0 left-5">
+          <Banner300x250 />
+        </div>
+      )}
       <p>
         Press{" "}
         <ColorText Variant="span" className="font-bold">

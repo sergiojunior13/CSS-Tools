@@ -5,8 +5,14 @@ import CssCode from "../src/components/CssCode";
 import InputRangeBox from "../src/components/inputs/InputRange";
 import ExampleImage from "../public/example-image.jpg";
 import Image from "next/image";
+import Banner350x50 from "../src/components/ads/Banner350x50";
+import Banner160x600 from "../src/components/ads/Banner160x600";
+import useIsMobile from "../hooks/useIsMobile";
+import Banner300x250 from "../src/components/ads/Banner300x250";
 
 export default function Filter() {
+  const { isMobile } = useIsMobile();
+
   const [blur, setBlur] = useState(0);
   const [brightness, setBrightness] = useState(1);
   const [contrast, setContrast] = useState(1);
@@ -126,21 +132,25 @@ export default function Filter() {
           />
           {/*Dropsahdw*/}
         </div>
-        <div className="self-end flex flex-col rounded-lg w-full sm:w-2/5 sm:relative sticky top-0 h-min shadow-neomorphism bg-zinc-800">
-          <Image
-            width={640}
-            height={640}
-            className="rounded-t-lg aspect-square"
-            src={ExampleImage}
-            style={{ filter: code }}
-            alt="example image"
-          />
-          <CssCode
-            truncate={false}
-            className="rounded-t-none rounded-lg text-left"
-            cssCode={`filter: ${code};`}
-          />
+        <div className="flex flex-col w-full sm:w-2/5 max-w-[640px]">
+          <div className="self-end flex flex-col rounded-lg sm:relative sticky top-0 h-min shadow-neomorphism bg-zinc-800">
+            <Image
+              width={640}
+              height={640}
+              className="rounded-t-lg aspect-square"
+              src={ExampleImage}
+              style={{ filter: code }}
+              alt="example image"
+            />
+            <CssCode
+              truncate={false}
+              className="rounded-t-none rounded-lg text-left"
+              cssCode={`filter: ${code};`}
+            />
+          </div>
+          <Banner300x250 />
         </div>
+        <Banner350x50 />
       </div>
     </main>
   );

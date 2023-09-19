@@ -11,6 +11,7 @@ import ShadowsList, { ShadowsListContext } from "../src/components/ShadowsList";
 import { useBoxShadow } from "../hooks/useBoxShadow";
 
 import Link from "next/link";
+import Banner350x50 from "../src/components/ads/Banner350x50";
 
 export default function BoxShadow() {
   const {
@@ -45,6 +46,7 @@ export default function BoxShadow() {
       <ColorText className="mb-8" Variant="h1">
         Box Shadow Generator
       </ColorText>
+      <Banner350x50 />
       <div className="grid lg:grid-cols-2 justify-center gap-5">
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap lg:flex-nowrap justify-center gap-3">

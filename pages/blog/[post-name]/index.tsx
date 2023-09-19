@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useRef } from "react";
 import TableOfContents from "../../../src/components/TableOfContents";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
@@ -8,6 +8,10 @@ import matter from "gray-matter";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Code, CopyBlock, dracula } from "react-code-blocks";
 import Link from "next/link";
+import Banner350x50 from "../../../src/components/ads/Banner350x50";
+import Banner160x600 from "../../../src/components/ads/Banner160x600";
+import Banner300x250 from "../../../src/components/ads/Banner300x250";
+import useIsMobile from "../../../hooks/useIsMobile";
 
 interface postDataProps extends matter.GrayMatterFile<string> {
   data: {
@@ -20,20 +24,11 @@ interface postDataProps extends matter.GrayMatterFile<string> {
 const rootUrl = process.env.NEXT_PUBLIC_URL;
 
 export default function Post({ content, data }: postDataProps) {
-  useEffect(() => {
-    const toMobile = () => setIsMobile(window.innerWidth < 768);
-
-    toMobile();
-
-    window.addEventListener("resize", toMobile);
-
-    return () => window.removeEventListener("resize", toMobile);
-  }, []);
+  const { isMobile } = useIsMobile();
 
   const { title, date } = data;
 
   const { asPath } = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
   const url = rootUrl + asPath.slice(1);
 
   const articleRef = useRef<HTMLDivElement>(null);
@@ -56,15 +51,16 @@ export default function Post({ content, data }: postDataProps) {
         description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
       />
       {!isMobile && (
-        <aside className="w-1/5 sticky top-5 self-start h-[70vh] px-5">
-          {/* <div className="ad h-full w-full"></div> */}
+        <aside className="flex items-center justify-center w-1/5 sticky h-screen top-0 self-start px-5">
+          <Banner160x600 />
         </aside>
       )}
+
       <article
         className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap"
         ref={articleRef}
       >
-        {/* <div className="ad w-full h-48 mb-5"></div> */}
+        {isMobile && <Banner350x50 />}
         <time
           dateTime="2023-03-28T14:30:00.000Z"
           className="md:text-sm text-base text-zinc-400"
@@ -117,14 +113,18 @@ export default function Post({ content, data }: postDataProps) {
         >
           {content}
         </ReactMarkdown>
-        <footer>{/* <div className="ad w-full h-48 mt-5"></div> */}</footer>
+        <footer>
+          <Banner350x50 />
+        </footer>
       </article>
       {!isMobile && (
-        <aside className="flex flex-col gap-4 w-1/5 p-5 sticky top-14 self-start">
-          <nav className="flex flex-col gap-4">
-            <label className="text-xl font-semibold">Quick Nav</label>
-            <TableOfContents articleRef={articleRef} />
-            {/* <div className="ad w-full h-[30vh]"></div> */}
+        <aside className="flex flex-col w-1/5 px-2 sticky top-0 h-screen self-start">
+          <nav className="flex h-full flex-col gap-4">
+            <div className="pb-4">
+              <label className="text-xl font-semibold">Quick Nav</label>
+              <TableOfContents articleRef={articleRef} />
+            </div>
+            <Banner300x250 />
           </nav>
         </aside>
       )}
@@ -135,7 +135,6 @@ export default function Post({ content, data }: postDataProps) {
 interface PostHeadingProps {
   heading: "h1" | "h2" | "h3";
   children: ReactNode;
-  // setHeadings: Dispatch<SetStateAction<Headings>>;
 }
 
 function PostHeading({ heading, children }: PostHeadingProps) {

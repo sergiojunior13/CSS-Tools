@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { links } from "./Header";
+import NativeBanner from "./ads/NativeBanner";
 
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 flex flex-col text-white/80 p-4 gap-8 text-center text-xs">
+      <NativeBanner />
       <div className="grid grid-rows-2 md:grid-cols-2 md:grid-rows-none place-items-center max-w-5xl mx-auto">
         <Link href="/">
           <Image
