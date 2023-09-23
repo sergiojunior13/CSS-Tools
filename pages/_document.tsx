@@ -45,6 +45,11 @@ function GoogleAnalyticsAndAdSense() {
       gtag("config", "G-G0MQ749VYG");`,
         }}
       />
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2683859460671203"
+        crossOrigin="anonymous"
+      />
     </>
   );
 }
