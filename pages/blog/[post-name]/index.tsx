@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Code, CopyBlock, dracula } from "react-code-blocks";
 import Link from "next/link";
+import Banner350x175 from "../../../src/components/ads/Banner400x200";
 
 interface postDataProps extends matter.GrayMatterFile<string> {
   data: {
@@ -60,15 +61,13 @@ export default function Post({ content, data }: postDataProps) {
           {/* <div className="ad h-full w-full"></div> */}
         </aside>
       )}
+
       <article
-        className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap"
+        className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap flex flex-col"
         ref={articleRef}
       >
-        {/* <div className="ad w-full h-48 mb-5"></div> */}
-        <time
-          dateTime="2023-03-28T14:30:00.000Z"
-          className="md:text-sm text-base text-zinc-400"
-        >
+        <Banner350x175 />
+        <time dateTime="2023-03-28T14:30:00.000Z" className="md:text-sm text-base text-zinc-400">
           {dayjs(date).format("dddd, MMMM DD, YYYY")}
         </time>
         <PostHeading heading="h1">

@@ -8,6 +8,7 @@ import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorList from "../src/components/ColorList";
 import { NextSeo } from "next-seo";
+import Banner350x175 from "../src/components/ads/Banner400x200";
 
 export default function Gradient() {
   const [color, setColor] = useState("#0539f5ff");
@@ -57,14 +58,10 @@ export default function Gradient() {
         setCssCode(`${type}-gradient(${angle}deg, ${colors})`);
         break;
       case "radial":
-        setCssCode(
-          `${type}-gradient(${shape} at ${axis.x}%  ${axis.y}%, ${colors})`
-        );
+        setCssCode(`${type}-gradient(${shape} at ${axis.x}%  ${axis.y}%, ${colors})`);
         break;
       case "conic":
-        setCssCode(
-          `${type}-gradient(from ${angle}deg at ${axis.x}%  ${axis.y}%, ${colors})`
-        );
+        setCssCode(`${type}-gradient(from ${angle}deg at ${axis.x}%  ${axis.y}%, ${colors})`);
         break;
     }
   }, [type, colors, shape, axis, angle]);
@@ -78,6 +75,9 @@ export default function Gradient() {
       <ColorText className="mb-5" Variant="h1">
         Gradient Generator
       </ColorText>
+
+      <Banner350x175 />
+
       <div className="w-full max-w-screen-sm">
         <div className="flex justify-center flex-wrap gap-3">
           <div className="rounded-lg overflow-hidden shadow-neomorphism z-10">
@@ -94,9 +94,7 @@ export default function Gradient() {
           <ColorList colors={colors} handleRemove={handleRemove} />
         </div>
 
-        <form
-          className={`flex flex-col items-center sm:grid sm:grid-cols-2 mt-3 gap-3`}
-        >
+        <form className={`flex flex-col items-center sm:grid sm:grid-cols-2 mt-3 gap-3`}>
           <div className="flex w-full align-top flex-col gap-3">
             <InputRadioBox
               title="Gradient Type"
@@ -148,9 +146,6 @@ function convertAxis(axis: number) {
   return axis * 2;
 }
 
-export function Label({
-  children: children,
-  className,
-}: HTMLAttributes<HTMLHeadingElement>) {
+export function Label({ children: children, className }: HTMLAttributes<HTMLHeadingElement>) {
   return <label className={"text-gray-400 " + className}>{children}</label>;
 }

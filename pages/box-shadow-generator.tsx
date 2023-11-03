@@ -11,6 +11,7 @@ import ShadowsList, { ShadowsListContext } from "../src/components/ShadowsList";
 import { useBoxShadow } from "../hooks/useBoxShadow";
 
 import Link from "next/link";
+import Banner350x175 from "../src/components/ads/Banner400x200";
 
 export default function BoxShadow() {
   const {
@@ -25,16 +26,7 @@ export default function BoxShadow() {
     removeShadow,
   } = useBoxShadow();
 
-  const {
-    inset,
-    axis,
-    blur,
-    code,
-    color,
-    spread,
-    selectedShadowCode,
-    shadows,
-  } = state;
+  const { inset, axis, blur, code, color, spread, selectedShadowCode, shadows } = state;
 
   return (
     <main className="flex flex-col gap-5 p-4 items-center justify-center my-5 text-white">
@@ -45,6 +37,9 @@ export default function BoxShadow() {
       <ColorText className="mb-8" Variant="h1">
         Box Shadow Generator
       </ColorText>
+
+      <Banner350x175 />
+
       <div className="grid lg:grid-cols-2 justify-center gap-5">
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap lg:flex-nowrap justify-center gap-3">
@@ -69,11 +64,7 @@ export default function BoxShadow() {
             name="spread"
             valuetext={{ value: spread, text: "px" }}
           />
-          <InputCheckBox
-            name="Inset"
-            handleChange={handleInset}
-            isChecked={inset}
-          />
+          <InputCheckBox name="Inset" handleChange={handleInset} isChecked={inset} />
           <ShadowsListContext.Provider
             value={{
               selectedShadowCode,
@@ -102,10 +93,7 @@ export default function BoxShadow() {
       <div>
         <p>
           To see how the box-shadow property works, just{" "}
-          <Link
-            href="/blog/box-shadow-in-css/"
-            className="text-orange-500 font-bold"
-          >
+          <Link href="/blog/box-shadow-in-css/" className="text-orange-500 font-bold">
             click here
           </Link>
           .

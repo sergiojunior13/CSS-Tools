@@ -3,6 +3,7 @@ import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
+import Banner350x175 from "../src/components/ads/Banner400x200";
 
 export default function BorderRadius() {
   const [radius, setRadius] = useState({
@@ -12,11 +13,7 @@ export default function BorderRadius() {
     bottomLeft: 0,
   });
 
-  type currentPositionFocusedProps =
-    | "topLeft"
-    | "topRight"
-    | "bottomRight"
-    | "bottomLeft";
+  type currentPositionFocusedProps = "topLeft" | "topRight" | "bottomRight" | "bottomLeft";
 
   const [currentPositionFocused, setCurrentPositionFocused] =
     useState<currentPositionFocusedProps | null>(null);
@@ -53,6 +50,9 @@ export default function BorderRadius() {
       <ColorText className="mb-3" Variant="h1">
         Border Radius Generator
       </ColorText>
+
+      <Banner350x175 />
+
       <p>
         Press{" "}
         <ColorText Variant="span" className="font-bold">
@@ -100,11 +100,7 @@ export default function BorderRadius() {
           className="self-end justify-self-end"
         />
       </div>
-      <CssCode
-        cssCode={`border-radius: ${code};`}
-        className="w-full rounded-lg"
-        truncate={false}
-      />
+      <CssCode cssCode={`border-radius: ${code};`} className="w-full rounded-lg" truncate={false} />
     </main>
   );
 }
@@ -160,8 +156,7 @@ function Input({
       onChange={handleChange}
       onFocus={() => setCurrentPositionFocused(position)}
       className={
-        "w-12 h-5 bg-zinc-900 shadow-md outline-0 p-2 py-3 text-center rounded-lg " +
-        className
+        "w-12 h-5 bg-zinc-900 shadow-md outline-0 p-2 py-3 text-center rounded-lg " + className
       }
       {...rest}
     />
