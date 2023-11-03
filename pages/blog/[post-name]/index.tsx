@@ -6,7 +6,7 @@ import { getPostData } from "../../../lib/posts";
 import dayjs from "dayjs";
 import matter from "gray-matter";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Code, CopyBlock, dracula } from "react-code-blocks";
+import { Code, CopyBlock, ocean } from "react-code-blocks";
 import Link from "next/link";
 import Banner350x175 from "../../../src/components/ads/Banner400x200";
 
@@ -100,15 +100,16 @@ export default function Post({ content, data }: postDataProps) {
                   {...props}
                   text={children}
                   language={language ? language[1] : "css"}
-                  theme={dracula}
+                  theme={ocean}
+                  customStyle={{ fontSize: 14 }}
                 />
               ) : (
                 <CopyBlock
                   {...props}
-                  customStyle={{ marginTop: "8px", marginBottom: "8px" }}
+                  customStyle={{ marginTop: "8px", marginBottom: "8px", fontSize: 14 }}
                   text={children}
                   language={language ? language[1] : "css"}
-                  theme={dracula}
+                  theme={ocean}
                 />
               );
             },
