@@ -1,16 +1,21 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
-import TableOfContents from "../../../src/components/TableOfContents";
+import { ReactNode, useRef } from "react";
+
 import { ArticleJsonLd, NextSeo } from "next-seo";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { getPostData } from "../../../lib/posts";
-import dayjs from "dayjs";
-import matter from "gray-matter";
+
+import { GrayMatterFile } from "gray-matter/gray-matter";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Code, CopyBlock, ocean } from "react-code-blocks";
-import Link from "next/link";
-import Banner350x175 from "../../../src/components/ads/Banner400x200";
 
-interface postDataProps extends matter.GrayMatterFile<string> {
+import { getPostData } from "../../../lib/posts";
+import Banner350x175 from "../../../src/components/ads/Banner350x175";
+import TableOfContents from "../../../src/components/TableOfContents";
+
+import useIsMobile from "../../../hooks/useIsMobile";
+import dayjs from "dayjs";
+
+interface postDataProps extends GrayMatterFile<string> {
   data: {
     date: string;
     title: string;
@@ -21,121 +26,118 @@ interface postDataProps extends matter.GrayMatterFile<string> {
 const rootUrl = process.env.NEXT_PUBLIC_URL;
 
 export default function Post({ content, data }: postDataProps) {
-  useEffect(() => {
-    const toMobile = () => setIsMobile(window.innerWidth < 768);
-
-    toMobile();
-
-    window.addEventListener("resize", toMobile);
-
-    return () => window.removeEventListener("resize", toMobile);
-  }, []);
+  const { isMobile } = useIsMobile();
 
   const { title, date } = data;
 
   const { asPath } = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
   const url = rootUrl + asPath.slice(1);
 
   const articleRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="flex md:flex-row flex-col-reverse justify-between md:py-14 py-6 px-5 text-zinc-50 bg-zinc-900 w-full max-w-screen-2xl relative">
-      <NextSeo
-        title={`${title} - CSS Tools Blog`}
-        description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
-        openGraph={{ url: url, title }}
-        canonical={url}
-      />
-      <ArticleJsonLd
-        type="Article"
-        title={`${title} - CSS Tools Blog`}
-        url={url}
-        images={[`${rootUrl}CSS%20Tools%201280x1280.png`]}
-        authorName="CSS Tools"
-        datePublished="2023-04-12T00:00:00.000Z"
-        description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
-      />
-      {!isMobile && (
-        <aside className="w-1/5 sticky top-5 self-start h-[70vh] px-5">
-          {/* <div className="ad h-full w-full"></div> */}
-        </aside>
-      )}
-
-      <article
-        className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap flex flex-col"
-        ref={articleRef}
-      >
-        <Banner350x175 />
-        <time dateTime="2023-03-28T14:30:00.000Z" className="md:text-sm text-base text-zinc-400">
-          {dayjs(date).format("dddd, MMMM DD, YYYY")}
-        </time>
-        <PostHeading heading="h1">
-          {title
-            .split(" ")
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")}
-        </PostHeading>
-        <ReactMarkdown
-          components={{
-            a({ children: children, href, ...props }) {
-              if (!href) return <a {...props}>{children}</a>;
-              return (
-                <Link href={href} className="text-orange-500 underline">
-                  {children}
-                </Link>
-              );
-            },
-            h2({ children: children }) {
-              return <PostHeading heading="h2" children={children} />;
-            },
-            h3({ children: children }) {
-              return <PostHeading heading="h3" children={children} />;
-            },
-            code({ children: children, inline, className, ...props }) {
-              const language = /language-(\w+)/.exec(className || "");
-
-              return inline ? (
-                <Code
-                  {...props}
-                  text={children}
-                  language={language ? language[1] : "css"}
-                  theme={ocean}
-                  customStyle={{ fontSize: 14 }}
-                />
-              ) : (
-                <CopyBlock
-                  {...props}
-                  customStyle={{ marginTop: "8px", marginBottom: "8px", fontSize: 14 }}
-                  text={children}
-                  language={language ? language[1] : "css"}
-                  theme={ocean}
-                />
-              );
-            },
-          }}
+    <div className="text-zinc-50 bg-zinc-900">
+      <main className="max-w-screen-2xl mx-auto w-full flex md:flex-row flex-col-reverse justify-between md:py-14 py-6 px-5 relative">
+        <NextSeo
+          title={`${title} - CSS Tools Blog`}
+          description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
+          openGraph={{ url: url, title }}
+          canonical={url}
+        />
+        <ArticleJsonLd
+          type="Article"
+          title={`${title} - CSS Tools Blog`}
+          url={url}
+          images={[`${rootUrl}CSS%20Tools%201280x1280.png`]}
+          authorName="CSS Tools"
+          datePublished="2023-04-12T00:00:00.000Z"
+          description="Find the best tips and ideas for better designs. Enhance your website CSS with amazing tips!"
+        />
+        {!isMobile && (
+          <aside className="flex items-center justify-center w-1/5 sticky h-screen top-0 self-start px-5"></aside>
+        )}
+        <article
+          className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap  flex flex-col"
+          ref={articleRef}
         >
-          {content}
-        </ReactMarkdown>
-        <footer>{/* <div className="ad w-full h-48 mt-5"></div> */}</footer>
-      </article>
-      {!isMobile && (
-        <aside className="flex flex-col gap-4 w-1/5 p-5 sticky top-14 self-start">
-          <nav className="flex flex-col gap-4">
-            <label className="text-xl font-semibold">Quick Nav</label>
-            <TableOfContents articleRef={articleRef} />
-            {/* <div className="ad w-full h-[30vh]"></div> */}
-          </nav>
-        </aside>
-      )}
-    </main>
+          <Banner350x175 />
+          <time dateTime={dayjs(date).toISOString()} className="md:text-sm text-base text-zinc-400">
+            {dayjs(date).format("dddd, MMMM DD, YYYY")}
+          </time>
+          <PostHeading heading="h1">
+            {title
+              .split(" ")
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(" ")}
+          </PostHeading>
+          <ReactMarkdown
+            components={{
+              a({ children: children, href, ...props }) {
+                if (!href) return <a {...props}>{children}</a>;
+                return (
+                  <Link href={href} className="text-orange-500 underline">
+                    {children}
+                  </Link>
+                );
+              },
+              h2({ children: children }) {
+                return <PostHeading heading="h2" children={children} />;
+              },
+              h3({ children: children }) {
+                return <PostHeading heading="h3" children={children} />;
+              },
+              code({ children, inline, className, onCopy, ...props }) {
+                const language = /language-(\w+)/.exec(className || "");
+                let text = children.toString();
+
+                if (!inline) text = text.slice(0, -1);
+
+                return inline ? (
+                  <Code
+                    text={text}
+                    language={language ? language[1] : "css"}
+                    theme={ocean}
+                    customStyle={{ fontSize: "14px" }}
+                    {...props}
+                  />
+                ) : (
+                  <CopyBlock
+                    {...props}
+                    wrapLongLines
+                    customStyle={{
+                      marginTop: "8px",
+                      marginBottom: "8px",
+                      fontSize: "14px",
+                    }}
+                    text={text}
+                    language={language ? language[1] : "css"}
+                    theme={ocean}
+                  />
+                );
+              },
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+        </article>
+        {!isMobile && (
+          <aside className="flex flex-col w-1/5 px-2 sticky top-0 h-screen self-start">
+            <nav className="flex h-full flex-col gap-4">
+              <div className="pb-4">
+                <label className="text-xl font-semibold">Quick Nav</label>
+                <TableOfContents articleRef={articleRef} />
+              </div>
+            </nav>
+          </aside>
+        )}
+      </main>
+    </div>
   );
 }
 
 interface PostHeadingProps {
   heading: "h1" | "h2" | "h3";
   children: ReactNode;
-  // setHeadings: Dispatch<SetStateAction<Headings>>;
 }
 
 function PostHeading({ heading, children }: PostHeadingProps) {

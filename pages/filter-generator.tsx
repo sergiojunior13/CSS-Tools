@@ -1,11 +1,13 @@
-import { NextSeo } from "next-seo";
 import { useState } from "react";
+import { NextSeo } from "next-seo";
+import Image from "next/image";
+
+import ExampleImage from "../public/example-image.jpg";
+
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
 import InputRangeBox from "../src/components/inputs/InputRange";
-import ExampleImage from "../public/example-image.jpg";
-import Image from "next/image";
-import Banner350x175 from "../src/components/ads/Banner400x200";
+import Banner350x175 from "../src/components/ads/Banner350x175";
 
 export default function Filter() {
   const [blur, setBlur] = useState(0);
@@ -128,7 +130,6 @@ export default function Filter() {
             step={0.1}
             handleChange={setSepia}
           />
-          {/*Dropsahdw*/}
         </div>
         <div className="self-end flex flex-col rounded-lg w-full sm:w-2/5 sm:relative sticky top-0 h-min shadow-neomorphism bg-zinc-800">
           <Image

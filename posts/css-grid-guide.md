@@ -38,9 +38,7 @@ Once you have a grid container, you can define the columns and rows of the grid.
 ```css
 .container {
   display: grid;
-
   grid-template-columns: 200px 200px 200px;
-
   grid-template-rows: 100px 100px 100px;
 }
 ```
@@ -58,7 +56,6 @@ The children of the grid container are known as grid items. By default, each gri
 ```css
 .item {
   grid-column: 1 / 3;
-
   grid-row: 1 / 2;
 }
 ```
@@ -72,7 +69,6 @@ The `grid-gap` property is a shorthand for `grid-row-gap` and `grid-column-gap`,
 ```css
 .container {
   display: grid;
-
   grid-gap: 10px;
 }
 ```
@@ -84,7 +80,6 @@ The vertical and horizontal lines that divide the grid are known as grid lines. 
 ```css
 .item {
   grid-column: 1 / 3;
-
   grid-row: 1 / 2;
 }
 ```
@@ -106,7 +101,6 @@ CSS Grid makes it easy to create responsive designs. By using the `fr` unit, whi
 ```css
 .container {
   display: grid;
-
   grid-template-columns: 1fr 1fr 1fr;
 }
 ```

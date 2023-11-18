@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import Link from "next/link";
 
 import AxisBox from "../src/components/AxisBox";
 import ColorPicker from "../src/components/ColorPicker";
@@ -7,11 +8,9 @@ import CssCode from "../src/components/CssCode";
 import InputCheckBox from "../src/components/inputs/InputCheckBox";
 import InputRangeBox from "../src/components/inputs/InputRange";
 import ShadowsList, { ShadowsListContext } from "../src/components/ShadowsList";
+import Banner350x175 from "../src/components/ads/Banner350x175";
 
 import { useBoxShadow } from "../hooks/useBoxShadow";
-
-import Link from "next/link";
-import Banner350x175 from "../src/components/ads/Banner400x200";
 
 export default function BoxShadow() {
   const {

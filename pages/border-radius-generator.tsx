@@ -1,11 +1,15 @@
-import { NextSeo } from "next-seo";
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
-import { isMobile } from "react-device-detect";
+import { NextSeo } from "next-seo";
+
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import Banner350x175 from "../src/components/ads/Banner400x200";
+import Banner350x175 from "../src/components/ads/Banner350x175";
+
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function BorderRadius() {
+  const { isMobile } = useIsMobile(1280);
+
   const [radius, setRadius] = useState({
     topLeft: 0,
     topRight: 0,

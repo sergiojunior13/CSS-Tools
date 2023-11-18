@@ -1,16 +1,20 @@
+import { HTMLAttributes, useEffect, useState } from "react";
+import { NextSeo } from "next-seo";
+
+import ColorPicker from "../src/components/ColorPicker";
+import ColorList from "../src/components/ColorList";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
 import AxisBox from "../src/components/AxisBox";
 import InputRangeBox from "../src/components/inputs/InputRange";
 import InputRadioBox from "../src/components/inputs/InputRadio";
+import Banner350x175 from "../src/components/ads/Banner350x175";
 
-import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
-import ColorPicker from "../src/components/ColorPicker";
-import ColorList from "../src/components/ColorList";
-import { NextSeo } from "next-seo";
-import Banner350x175 from "../src/components/ads/Banner400x200";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function Gradient() {
+  const { isMobile } = useIsMobile(1152);
+
   const [color, setColor] = useState("#0539f5ff");
   const [colors, setColors] = useState<string[]>(["#0539f5ff", "#0079f5ff"]);
   const [type, setType] = useState("linear");
@@ -82,7 +86,7 @@ export default function Gradient() {
         <div className="flex justify-center flex-wrap gap-3">
           <div className="rounded-lg overflow-hidden shadow-neomorphism z-10">
             <div className="flex flex-col items-center p-5 bg-zinc-900 text-lg uppercase">
-              <ColorPicker color={color} handleColor={handleColor} />{" "}
+              <ColorPicker color={color} handleColor={handleColor} />
             </div>
             <button
               className="bg-blue-700 w-full py-1 hover:bg-blue-800 rounded-b-lg"
