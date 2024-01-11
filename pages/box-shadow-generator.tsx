@@ -1,7 +1,6 @@
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-
-import AxisBox from "../src/components/AxisBox";
+import { AxisBox, Axis } from "../src/components/AxisBox";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
@@ -63,7 +62,7 @@ export default function BoxShadow() {
             name="spread"
             valuetext={{ value: spread, text: "px" }}
           />
-          <InputCheckBox name="Inset" handleChange={handleInset} isChecked={inset} />
+          <InputCheckBox label="Inset" handleChange={handleInset} isChecked={inset} />
           <ShadowsListContext.Provider
             value={{
               selectedShadowCode,

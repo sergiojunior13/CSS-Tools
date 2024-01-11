@@ -18,20 +18,24 @@ export default function InputText({
   text,
   ...rest
 }: InputTextProps) {
-  const isInputTypeNumber = typeof value === "number";
-  const inputTypeIfIsNumber = isInputTypeNumber ? "number" : undefined;
-
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     if (!handleValue) return;
 
-    let inputValue = Number(e.target.value);
+    let inputValue: any = e.target.value;
 
-    if (max !== undefined && inputValue > max) {
-      inputValue = max;
+    const isInputValueANumber = !isNaN(Number(inputValue));
+
+    if (isInputValueANumber) {
+      inputValue = Number(inputValue);
+
+      if (max !== undefined && inputValue > max) {
+        inputValue = max;
+      }
+      if (min !== undefined && inputValue < min) {
+        inputValue = min;
+      }
     }
-    if (min !== undefined && inputValue < min) {
-      inputValue = min;
-    }
+
     handleValue(inputValue);
   }
 
@@ -40,7 +44,6 @@ export default function InputText({
       <input
         value={value}
         onChange={handleChange}
-        type={inputTypeIfIsNumber}
         className={`outline-0 bg-transparent ${className}`}
         {...rest}
       />

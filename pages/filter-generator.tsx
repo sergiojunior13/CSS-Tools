@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-
 import ExampleImage from "../public/example-image.jpg";
 
 import ColorText from "../src/components/ColorText";

@@ -5,12 +5,13 @@ import ColorPicker from "../src/components/ColorPicker";
 import ColorList from "../src/components/ColorList";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import AxisBox from "../src/components/AxisBox";
+import { AxisBox } from "../src/components/AxisBox";
 import InputRangeBox from "../src/components/inputs/InputRange";
 import InputRadioBox from "../src/components/inputs/InputRadio";
 import Banner350x175 from "../src/components/ads/Banner350x175";
 
 import useIsMobile from "../hooks/useIsMobile";
+import { validateColors } from "../utils/validateColors";
 
 export default function Gradient() {
   const { isMobile } = useIsMobile(1152);
@@ -35,7 +36,10 @@ export default function Gradient() {
       alert("This color already exists!");
       return;
     }
-    setColors([color, ...colors]);
+
+    const validatedColors = validateColors([color, ...colors]);
+
+    setColors(validatedColors);
   }
 
   function handleTypeChange(value: string) {

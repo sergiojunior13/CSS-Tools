@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import { Label } from "../../../pages/gradient-generator";
-import InputText from "../InputText";
+import InputText from "./InputText";
 
 interface InputRangeBoxProps {
   name: string;
@@ -30,6 +30,7 @@ export default function InputRangeBox(props: InputRangeBoxProps) {
         <Label className="mb-1">{props.name}</Label>
         <InputText
           type={"number"}
+          data-testid="valueInput"
           value={props.valuetext.value}
           handleValue={handleValue}
           className="outline-none text-right text-orange-500 w-2/4"

@@ -1,22 +1,35 @@
 import Draggable from "react-draggable";
-import InputText from "./InputText";
+import InputText from "./inputs/InputText";
 
 interface AxisBoxProps {
-  handleAxis: ({ x, y }: { x: number; y: number }) => void;
-  axis: {
-    x: number;
-    y: number;
-  };
+  handleAxis: ({ x, y }: Axis) => void;
+  axis: Axis;
   max?: number;
   min?: number;
-  convertAxis?: (value: number) => number;
+  convertAxis?: (axis: number) => number;
 }
 
-export default function AxisBox({
+export type Axis = {
+  x: number;
+  y: number;
+};
+
+export function defaultConvertAxis(axis: number) {
+  return (Number(axis) + 50) * 2;
+}
+
+export function generateConvertedAxesObject(
+  { x, y }: Axis,
+  convertAxis: (axis: number) => number
+) {
+  return { x: convertAxis(x), y: convertAxis(y) };
+}
+
+export function AxisBox({
   handleAxis,
   axis,
-  max = 50,
-  min = -50,
+  max,
+  min,
   convertAxis = defaultConvertAxis,
 }: AxisBoxProps) {
   return (
@@ -24,8 +37,11 @@ export default function AxisBox({
       <div className="relative w-[212px] m-auto aspect-square bg-zinc-900 rounded-md outline-zinc-700 outline-2 outline">
         <Draggable
           bounds="parent"
-          onDrag={(e, data) => handleAxis(data)}
-          position={{ x: convertAxis(axis.x), y: convertAxis(axis.y) }}
+          onDrag={(_, data) => handleAxis(data)}
+          position={generateConvertedAxesObject(
+            { x: axis.x, y: axis.y },
+            convertAxis
+          )}
           defaultPosition={{ x: 100, y: 100 }}
         >
           <div className="absolute bg-orange-500 w-3 h-3 rounded-full cursor-move"></div>
@@ -40,10 +56,9 @@ export default function AxisBox({
             type="number"
             value={axis.x}
             handleValue={x => {
-              handleAxis({
-                x: convertAxis(x),
-                y: convertAxis(axis.y),
-              });
+              handleAxis(
+                generateConvertedAxesObject({ x: x, y: axis.y }, convertAxis)
+              );
             }}
             className="text-right text-orange-500"
           />
@@ -56,10 +71,9 @@ export default function AxisBox({
             type="number"
             value={axis.y}
             handleValue={y =>
-              handleAxis({
-                x: convertAxis(axis.x),
-                y: convertAxis(y),
-              })
+              handleAxis(
+                generateConvertedAxesObject({ x: axis.x, y: y }, convertAxis)
+              )
             }
             className="text-right text-orange-500"
           />
@@ -67,8 +81,4 @@ export default function AxisBox({
       </div>
     </div>
   );
-}
-
-function defaultConvertAxis(number: number) {
-  return (Number(number) + 50) * 2;
 }

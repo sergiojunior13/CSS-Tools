@@ -1,5 +1,4 @@
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { Label } from "../../../pages/gradient-generator";
 
 interface InputRadioBoxProps {
   title: string;
@@ -20,20 +19,24 @@ export default function InputRadioBox({
       defaultValue={defaultValue}
       onValueChange={handleChange}
     >
-      <Label className="text-zinc-400">{title}</Label>
-      {values.map(value => (
-        <label htmlFor={value} className="flex items-center" key={value}>
-          <RadioGroup.Item
-            key={value}
-            id={value}
-            value={value}
-            className="w-4 h-4 flex items-center justify-center bg-zinc-700 outline outtine-1 rounded-full outline-none mr-2"
-          >
-            <RadioGroup.Indicator className="bg-orange-500 w-full h-full block rounded-full" />
-          </RadioGroup.Item>
-          {value}
-        </label>
-      ))}
+      <label className="text-zinc-400" htmlFor={defaultValue}>
+        {title}
+      </label>
+      <div>
+        {values.map(value => (
+          <label htmlFor={value} className="flex items-center" key={value}>
+            <RadioGroup.Item
+              key={value}
+              id={value}
+              value={value}
+              className="w-4 h-4 flex items-center justify-center bg-zinc-700 outline outtine-1 rounded-full outline-none mr-2"
+            >
+              <RadioGroup.Indicator className="bg-orange-500 w-full h-full block rounded-full" />
+            </RadioGroup.Item>
+            {value}
+          </label>
+        ))}
+      </div>
     </RadioGroup.Root>
   );
 }
