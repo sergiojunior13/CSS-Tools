@@ -6,31 +6,44 @@ interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   max?: number;
   min?: number;
-  text?: string;
+  measureText?: string;
+}
+
+export function fixValuesIfTheyExtrapolateMaxOrMin(
+  value: number,
+  max: number,
+  min: number
+) {
+  if (value > max) {
+    value = max;
+  }
+  if (value < min) {
+    value = min;
+  }
+
+  return value;
 }
 
 export default function InputText({
   value,
   handleValue,
   className,
-  max,
-  min,
-  text,
+  max = 50,
+  min = -50,
+  measureText,
   ...rest
 }: InputTextProps) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     if (!handleValue) return;
 
-    let inputValue: any = e.target.value;
+    const value = Number(e.target.value);
+    const fixedValue = fixValuesIfTheyExtrapolateMaxOrMin(value, max, min);
 
-    if (max !== undefined && inputValue > max) {
-      inputValue = max;
-    }
-    if (min !== undefined && inputValue < min) {
-      inputValue = min;
-    }
-    handleValue(inputValue);
+    handleValue(fixedValue);
   }
+
+  if (typeof value === "number")
+    value = fixValuesIfTheyExtrapolateMaxOrMin(value, max, min);
 
   return (
     <div className={`outline-0 bg-transparent ${className}`}>
@@ -38,9 +51,10 @@ export default function InputText({
         value={value}
         onChange={handleChange}
         className={`outline-0 bg-transparent ${className}`}
+        data-testid="input"
         {...rest}
       />
-      {text && <span>{text}</span>}
+      {measureText && <span>{measureText}</span>}
     </div>
   );
 }

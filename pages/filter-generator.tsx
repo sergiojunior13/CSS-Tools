@@ -1,10 +1,12 @@
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 import { useState } from "react";
+
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import InputRangeBox from "../src/components/Inputs/InputRange";
+import InputRangeBox from "../src/components/inputs/InputRange";
+
 import ExampleImage from "../public/example-image.jpg";
-import Image from "next/image";
 
 export default function Filter() {
   const [blur, setBlur] = useState(0);
@@ -55,7 +57,8 @@ export default function Filter() {
         <div className="flex flex-col gap-5 sm:w-auto w-full">
           <InputRangeBox
             name="blur"
-            valuetext={{ value: blur, text: "px" }}
+            value={blur}
+            measureText="px"
             min={0}
             max={100}
             step={1}
@@ -64,7 +67,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="brightness"
-            valuetext={{ value: brightness }}
+            value={brightness}
             min={0}
             max={5}
             step={0.1}
@@ -73,7 +76,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="contrast"
-            valuetext={{ value: contrast }}
+            value={contrast}
             min={0}
             max={10}
             step={0.1}
@@ -82,7 +85,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="grayscale"
-            valuetext={{ value: grayscale }}
+            value={grayscale}
             min={0}
             max={1}
             step={0.1}
@@ -91,7 +94,8 @@ export default function Filter() {
           />
           <InputRangeBox
             name="hue-rotate"
-            valuetext={{ value: hueRotate, text: "deg" }}
+            value={hueRotate}
+            measureText="deg"
             min={0}
             max={360}
             handleChange={e => setHueRotate(+e.target.value)}
@@ -99,7 +103,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="invert"
-            valuetext={{ value: invert }}
+            value={invert}
             min={0}
             max={1}
             step={0.1}
@@ -108,7 +112,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="opacity"
-            valuetext={{ value: opacity }}
+            value={opacity}
             min={0}
             max={1}
             step={0.1}
@@ -117,7 +121,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="saturate"
-            valuetext={{ value: saturate }}
+            value={saturate}
             min={0}
             max={5}
             step={0.1}
@@ -126,7 +130,7 @@ export default function Filter() {
           />
           <InputRangeBox
             name="sepia"
-            valuetext={{ value: sepia }}
+            value={sepia}
             min={0}
             max={1}
             step={0.1}

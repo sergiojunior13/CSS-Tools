@@ -1,11 +1,12 @@
 import { NextSeo } from "next-seo";
 import { ChangeEvent, useEffect, useState } from "react";
-import AxisBox from "../src/components/AxisBox";
+
+import { AxisBox, Axis } from "../src/components/AxisBox";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import InputCheckBox from "../src/components/Inputs/InputCheckBox";
-import InputRangeBox from "../src/components/Inputs/InputRange";
+import InputCheckBox from "../src/components/inputs/InputCheckBox";
+import InputRangeBox from "../src/components/inputs/InputRange";
 
 export default function BoxShadow() {
   const [color, setColor] = useState("#0539f5ff");
@@ -15,9 +16,10 @@ export default function BoxShadow() {
   const [inset, setInset] = useState(false);
   const [code, setCode] = useState("0px 0px 15px 0px #000000ff");
 
-  function handleAxis({ x, y }: { x: number; y: number }) {
+  function handleAxis({ x, y }: Axis) {
     x = Math.floor(x / 2 - 50);
     y = Math.floor(y / 2 - 50);
+
     setAxis({ x, y });
   }
 
@@ -35,9 +37,10 @@ export default function BoxShadow() {
 
   useEffect(() => {
     setCode(
-      `${inset ? "inset" : ""} ${axis.x}px ${
-        axis.y
-      }px ${blur}px ${spread}px ${color}`.replaceAll(/(?<=\s)[0]px(?=\s)/g, "0")
+      `${inset ? "inset" : ""} ${axis.x}px ${axis.y}px ${blur}px ${spread}px ${color}`.replaceAll(
+        /(?<=\s)[0]px(?=\s)/g,
+        "0"
+      )
     );
   }, [color, axis, blur, spread, inset]);
 
@@ -65,7 +68,8 @@ export default function BoxShadow() {
             min={0}
             step={1}
             name="blur"
-            valuetext={{ value: blur, text: "px" }}
+            value={blur}
+            measureText="px"
           />
           <InputRangeBox
             handleChange={handleSpread}
@@ -74,9 +78,10 @@ export default function BoxShadow() {
             min={-50}
             step={1}
             name="spread"
-            valuetext={{ value: spread, text: "px" }}
+            value={spread}
+            measureText="px"
           />
-          <InputCheckBox name="Inset" handleChange={handleInset} />
+          <InputCheckBox label="Inset" handleChange={handleInset} />
         </div>
 
         <div className="w-96 sticky sm:relative bottom-0 z-[100]">

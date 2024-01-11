@@ -1,13 +1,14 @@
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import AxisBox from "../src/components/AxisBox";
-import InputRangeBox from "../src/components/Inputs/InputRange";
-import InputRadioBox from "../src/components/Inputs/InputRadio";
+import { AxisBox } from "../src/components/AxisBox";
+import InputRangeBox from "../src/components/inputs/InputRange";
+import InputRadioBox from "../src/components/inputs/InputRadio";
 
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from "react";
 import ColorPicker from "../src/components/ColorPicker";
 import ColorList from "../src/components/ColorList";
 import { NextSeo } from "next-seo";
+import { validateColors } from "../utils/validateColors";
 
 export default function Gradient() {
   const [color, setColor] = useState("#0539f5ff");
@@ -30,7 +31,10 @@ export default function Gradient() {
       alert("This color already exists!");
       return;
     }
-    setColors([color, ...colors]);
+
+    const validatedColors = validateColors([color, ...colors]);
+
+    setColors(validatedColors);
   }
 
   function handleTypeChange(value: string) {
@@ -61,14 +65,10 @@ export default function Gradient() {
         setCssCode(`${type}-gradient(${angle}deg, ${colors})`);
         break;
       case "radial":
-        setCssCode(
-          `${type}-gradient(${shape} at ${axis.x}%  ${axis.y}%, ${colors})`
-        );
+        setCssCode(`${type}-gradient(${shape} at ${axis.x}%  ${axis.y}%, ${colors})`);
         break;
       case "conic":
-        setCssCode(
-          `${type}-gradient(from ${angle}deg at ${axis.x}%  ${axis.y}%, ${colors})`
-        );
+        setCssCode(`${type}-gradient(from ${angle}deg at ${axis.x}%  ${axis.y}%, ${colors})`);
         break;
     }
   }, [type, colors, shape, axis, angle]);
@@ -98,9 +98,7 @@ export default function Gradient() {
           <ColorList colors={colors} handleRemove={handleRemove} />
         </div>
 
-        <form
-          className={`flex flex-col items-center sm:grid sm:grid-cols-2 mt-3 gap-3`}
-        >
+        <form className={`flex flex-col items-center sm:grid sm:grid-cols-2 mt-3 gap-3`}>
           <div className="flex w-full align-top flex-col gap-3">
             <InputRadioBox
               title="Gradient Type"
@@ -111,7 +109,8 @@ export default function Gradient() {
             {type != "radial" && (
               <InputRangeBox
                 name="Gradient Angle"
-                valuetext={{ value: angle, text: "°" }}
+                value={angle}
+                measureText="°"
                 max="360"
                 min="0"
                 handleChange={handleAngleChange}
@@ -151,11 +150,4 @@ export default function Gradient() {
 
 function convertAxis(axis: number) {
   return axis * 2;
-}
-
-export function Label({
-  children,
-  className,
-}: HTMLAttributes<HTMLHeadingElement>) {
-  return <label className={"text-gray-400 " + className}>{children}</label>;
 }

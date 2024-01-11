@@ -1,38 +1,13 @@
-import { RefObject, useEffect, useState } from "react";
+import { RefObject } from "react";
 import Toc from "react-toc";
+import useMarkdown from "../hooks/useMarkdown";
 
 interface TableOfContentsProps {
   articleRef: RefObject<HTMLDivElement>;
 }
 
-type Heading = {
-  text: string;
-  level: number;
-};
-
 export default function TableOfContents({ articleRef }: TableOfContentsProps) {
-  const [headings, setHeadings] = useState<Heading[]>([]);
-
-  const markdown =
-    headings
-      .map(heading => `\n${"#".repeat(heading.level - 1)} ${heading.text}`)
-      .join("") + "\n";
-
-  useEffect(() => {
-    if (!articleRef.current) return;
-
-    const headingElements = Array.from(
-      articleRef.current.querySelectorAll<HTMLHeadingElement>("h2, h3")
-    );
-    setHeadings(
-      headingElements.map(heading => {
-        return {
-          text: heading.innerText,
-          level: Number(heading.tagName.substring(1)),
-        };
-      })
-    );
-  }, []);
+  const markdown = useMarkdown(articleRef);
 
   return (
     <Toc

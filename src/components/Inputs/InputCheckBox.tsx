@@ -2,12 +2,12 @@ import * as Checkbox from "@radix-ui/react-checkbox";
 import { Check } from "phosphor-react";
 
 interface InputCheckBoxProps {
-  name: string;
+  label: string;
   handleChange: (checked: boolean | "indeterminate") => void;
 }
 
 export default function InputCheckBox({
-  name,
+  label,
   handleChange,
 }: InputCheckBoxProps) {
   return (
@@ -20,7 +20,7 @@ export default function InputCheckBox({
           <Check weight="bold" />
         </Checkbox.Indicator>
       </Checkbox.Root>
-      {name}
+      {label}
     </label>
   );
 }
