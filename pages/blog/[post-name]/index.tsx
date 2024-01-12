@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { GrayMatterFile } from "gray-matter/gray-matter";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+// @ts-ignore
+import ReactMarkdown from "react-markdown";
 import { Code, CopyBlock, ocean } from "react-code-blocks";
 
 import { getPostData } from "../../../lib/posts";
@@ -72,7 +73,7 @@ export default function Post({ content, data }: postDataProps) {
           </PostHeading>
           <ReactMarkdown
             components={{
-              a({ children: children, href, ...props }) {
+              a({ children, href, node, ...props }) {
                 if (!href) return <a {...props}>{children}</a>;
                 return (
                   <Link href={href} className="text-orange-500 underline">
@@ -80,19 +81,17 @@ export default function Post({ content, data }: postDataProps) {
                   </Link>
                 );
               },
-              h2({ children: children }) {
+              h2({ children }) {
                 return <PostHeading heading="h2" children={children} />;
               },
-              h3({ children: children }) {
+              h3({ children }) {
                 return <PostHeading heading="h3" children={children} />;
               },
-              code({ children, inline, className, onCopy, ...props }) {
+              code({ children, className, onCopy, ...props }) {
                 const language = /language-(\w+)/.exec(className || "");
-                let text = children.toString();
+                let text = children?.toString() || "";
 
-                if (!inline) text = text.slice(0, -1);
-
-                return inline ? (
+                return (
                   <Code
                     text={text}
                     language={language ? language[1] : "css"}
@@ -100,7 +99,15 @@ export default function Post({ content, data }: postDataProps) {
                     customStyle={{ fontSize: "14px" }}
                     {...props}
                   />
-                ) : (
+                );
+              },
+              pre({ children, node, className, onCopy, ...props }) {
+                const language = /language-(\w+)/.exec(className || "");
+                // @ts-ignore
+                let text = node?.children[0].children[0].value || "";
+                text = text?.slice(0, -1);
+
+                return (
                   <CopyBlock
                     {...props}
                     wrapLongLines
