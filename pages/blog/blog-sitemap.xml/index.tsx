@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from "next";
+// @ts-ignore
 import { getServerSideSitemapLegacy } from "next-sitemap";
 import { getAllPostsData } from "../../../lib/posts";
 
