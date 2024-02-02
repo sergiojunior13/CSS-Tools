@@ -5,6 +5,6 @@ module.exports = {
   changefreq: "weekly",
   exclude: ["/blog/blog-sitemap.xml"],
   robotsTxtOptions: {
-    additionalSitemaps: [process.env.NEXT_PUBLIC_URL + "blog/blog-sitemap.xml"],
+    additionalSitemaps: [process.env.NEXT_PUBLIC_URL + "/blog/blog-sitemap.xml"],
   },
 };
