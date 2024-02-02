@@ -8,7 +8,6 @@ import CssCode from "../src/components/CssCode";
 import { AxisBox } from "../src/components/AxisBox";
 import InputRangeBox from "../src/components/inputs/InputRange";
 import InputRadioBox from "../src/components/inputs/InputRadio";
-import Banner350x175 from "../src/components/ads/Banner350x175";
 
 import useIsMobile from "../hooks/useIsMobile";
 import { validateColors } from "../utils/validateColors";
@@ -83,8 +82,6 @@ export default function Gradient() {
       <ColorText className="mb-5" Variant="h1">
         Gradient Generator
       </ColorText>
-
-      <Banner350x175 />
 
       <div className="w-full max-w-screen-sm">
         <div className="flex justify-center flex-wrap gap-3">

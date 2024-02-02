@@ -6,7 +6,6 @@ import ExampleImage from "../public/example-image.jpg";
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
 import InputRangeBox from "../src/components/inputs/InputRange";
-import Banner350x175 from "../src/components/ads/Banner350x175";
 
 export default function Filter() {
   const [blur, setBlur] = useState(0);
@@ -53,8 +52,6 @@ export default function Filter() {
       <ColorText className="mb-3" Variant="h1">
         Filter Generator
       </ColorText>
-
-      <Banner350x175 />
 
       <div className="flex flex-wrap-reverse gap-5 justify-center">
         <div className="flex flex-col gap-5 sm:w-auto w-full">

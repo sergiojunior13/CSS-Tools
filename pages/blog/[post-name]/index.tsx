@@ -10,7 +10,6 @@ import ReactMarkdown from "react-markdown";
 import { Code, CopyBlock, ocean } from "react-code-blocks";
 
 import { getPostData } from "../../../lib/posts";
-import Banner350x175 from "../../../src/components/ads/Banner350x175";
 import TableOfContents from "../../../src/components/TableOfContents";
 
 import useIsMobile from "../../../hooks/useIsMobile";
@@ -61,7 +60,6 @@ export default function Post({ content, data }: postDataProps) {
           className="text-zinc-300 text-lg md:w-3/5 max-w-3xl whitespace-pre-wrap  flex flex-col"
           ref={articleRef}
         >
-          <Banner350x175 />
           <time dateTime={dayjs(date).toISOString()} className="md:text-sm text-base text-zinc-400">
             {dayjs(date).format("dddd, MMMM DD, YYYY")}
           </time>

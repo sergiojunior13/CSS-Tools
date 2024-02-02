@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 
 import ColorText from "../src/components/ColorText";
 import CssCode from "../src/components/CssCode";
-import Banner350x175 from "../src/components/ads/Banner350x175";
 
 import useIsMobile from "../hooks/useIsMobile";
 
@@ -54,8 +53,6 @@ export default function BorderRadius() {
       <ColorText className="mb-3" Variant="h1">
         Border Radius Generator
       </ColorText>
-
-      <Banner350x175 />
 
       <p>
         Press{" "}

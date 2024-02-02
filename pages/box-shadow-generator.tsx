@@ -7,7 +7,6 @@ import CssCode from "../src/components/CssCode";
 import InputCheckBox from "../src/components/inputs/InputCheckBox";
 import InputRangeBox from "../src/components/inputs/InputRange";
 import ShadowsList, { ShadowsListContext } from "../src/components/ShadowsList";
-import Banner350x175 from "../src/components/ads/Banner350x175";
 
 import { useBoxShadow } from "../hooks/useBoxShadow";
 
@@ -35,8 +34,6 @@ export default function BoxShadow() {
       <ColorText className="mb-8" Variant="h1">
         Box Shadow Generator
       </ColorText>
-
-      <Banner350x175 />
 
       <div className="grid lg:grid-cols-2 justify-center gap-5">
         <div className="flex flex-col gap-3">
