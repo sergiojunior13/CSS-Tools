@@ -10,7 +10,7 @@ export function getAllPostsData() {
     const fullPath = path.join(postsDirectory, postName);
     const id = postName.replace(/\.md$/, "");
 
-    const postURL = `${process.env.NEXT_PUBLIC_URL}blog/${id}/`;
+    const postURL = `${process.env.NEXT_PUBLIC_URL}/blog/${id}/`;
     const postContent = fs.readFileSync(fullPath, "utf8");
 
     return {
